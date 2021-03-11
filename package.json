@@ -1,0 +1,39 @@
+{
+  "name": "chat-app",
+  "version": "1.0.1",
+  "description": "Chat Application",
+  "scripts": {
+    "seed:data": "npm run seed --prefix server",
+    "client:test": "npm run test --prefix client",
+    "server:test:watch": "npm run test:watch --prefix server",
+    "server:test:ci": "npm run test:ci --prefix server",
+    "test": "npm run test --prefix client && npm run server:test:ci",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server",
+    "heroku-postbuild": "npm install --prefix client && npm install --prefix server && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DhekerbenLazrek"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DhekerbenLazrek"
+  },
+  "homepage": "https://github.com/DhekerbenLazrek",
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  },
+  "dependencies": {
+    "express-validator": "^6.9.2",
+    "helmet": "^4.4.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-jwt": "^4.0.0",
+    "slugify": "^1.4.6",
+    "winston": "^3.3.3"
+  }
+}
