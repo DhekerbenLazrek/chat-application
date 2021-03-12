@@ -1,3 +1,11 @@
+const { endpoint, masterKey, PORT } = require('./config/config');
+
+console.log(`Your port is ${process.env.PORT}`); // undefined
+const dotenv = require('dotenv');
+dotenv.config();
+console.log(`Your port is ${process.env.PORT}`); // 8626
+
+
 /** Dotenv Environment Variables */
 if (process.env.HEROKU_DEPLOYMENT !== 'true') {
     require('dotenv').config();
