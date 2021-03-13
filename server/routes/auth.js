@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models/User');
 const gravatar = require('gravatar');
 const socialAuthActions = require('../actions/socialAuthActions');
-
+require('dotenv').config({path:"./.env"});
 /** Middleware */
 const {
     checkRegistrationFields,

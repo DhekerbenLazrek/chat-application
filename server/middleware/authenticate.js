@@ -1,5 +1,6 @@
 const passport = require('passport');
 const { User } = require('../models/User');
+require('dotenv').config({path:"./.env"});
 
 const createErrorObject = errors => {
     const errorObject = [];

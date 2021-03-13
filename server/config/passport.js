@@ -3,14 +3,14 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const slugify = require('slugify');
-
+const keys = require("./keys")
+require('dotenv').config({path:"./.env"});
 const { GOOGLE_CONFIG, FACEBOOK_CONFIG } = require('../config/config');
 const { User } = require('../models/User');
 
-let opts = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: process.env.JWT_SECRET
-};
+let opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = keys.secretOrKey
 
 module.exports = function(passport) {
     passport.serializeUser((user, done) => done(null, { id: user.id, _socket: user._socket }));

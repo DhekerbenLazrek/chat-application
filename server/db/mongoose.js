@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const { logger } = require('../config/logModule');
+require('dotenv').config({path:"./.env"});
 
 mongoose.Promise = global.Promise;
 
 const connect = () => {
     mongoose.connect(
-        process.env.DATABASE_URL,
+        process.env.MONGO_URI,
         { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
         err => {
             if (err) {

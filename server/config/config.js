@@ -1,10 +1,10 @@
 const dotenv = require('dotenv');
 dotenv.config();
-
+require('dotenv').config({path:"./.env"});
 module.exports = {
     GOOGLE_CONFIG: {
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        clientID: "766284901009-addbg5mgubtrnv5doie939saihjsr530.apps.googleusercontent.com",
+        clientSecret: "LhNiJw8ZqbyWw64-Fzkdyt1i",
         callbackURL: '/api/auth/google/redirect',
         passReqToCallback: true,
         scope: [
@@ -13,15 +13,14 @@ module.exports = {
         ]
     },
     FACEBOOK_CONFIG: {
-        clientID: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        clientID: "2599125657002783",
+        clientSecret: "bb2ff8ece7f15a10f5d1cedce0d20e20",
         callbackURL: '/api/auth/facebook/redirect',
         passReqToCallback: true,
         profileFields: ['id', 'displayName', 'name', 'gender', 'emails', 'picture.type(large)']
     },
-    endpoint: process.env.API_URL,
-    masterKey: process.env.API_KEY,
-    mongoUri: "mongodb+srv://dheker:dheker@cluster0.7qccs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    
+    mongoUri: "mongodb+srv://admin:admin@cluster0.s7wvq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     PORT: process.env.PORT || 5000,
     
 };

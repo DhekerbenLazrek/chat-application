@@ -1,14 +1,7 @@
-const { endpoint, masterKey, PORT } = require('./config/config');
-
-console.log(`Your port is ${process.env.PORT}`); // undefined
-const dotenv = require('dotenv');
-dotenv.config();
-console.log(`Your port is ${process.env.PORT}`); // 8626
-
 
 /** Dotenv Environment Variables */
 if (process.env.HEROKU_DEPLOYMENT !== 'true') {
-    require('dotenv').config();
+    require('dotenv').config({path:"./.env"});
 }
 
 
@@ -253,7 +246,7 @@ if (process.env.NODE_ENV === 'production') {
 
 if (process.env.NODE_ENV !== 'test') {
     server.listen(process.env.PORT || 5000, () => {
-        logger.info(`[LOG=SERVER] Server started on port ${process.env.PORT}`);
+        logger.info(`[LOG=SERVER] Server started on port 5000`);
     });
 }
 
