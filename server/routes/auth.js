@@ -7,6 +7,8 @@ const { User } = require('../models/User');
 const gravatar = require('gravatar');
 const socialAuthActions = require('../actions/socialAuthActions');
 require('dotenv').config({path:"./.env"});
+
+
 /** Middleware */
 const {
     checkRegistrationFields,
@@ -86,13 +88,12 @@ router.post('/register', [checkRegistrationFields], (req, res) => {
  */
 router.post('/login', checkLoginFields, async (req, res) => {
     const user = await User.findOne({ email: req.body.email }).select('-password');
-
     if (!user) {
         return res.status(404).send({
             error: 'No User Found'
         });
     }
-
+    
     const token = jwt.sign(user.toObject(), process.env.JWT_SECRET, { expiresIn: 18000 });
 
     res.status(200).send({ auth: true, token: `Bearer ${token}`, user });

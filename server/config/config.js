@@ -20,7 +20,7 @@ module.exports = {
         profileFields: ['id', 'displayName', 'name', 'gender', 'emails', 'picture.type(large)']
     },
     
-    mongoUri: "mongodb+srv://admin:admin@cluster0.s7wvq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    mongoUri: "mongodb+srv://dbuser:dbuser@cluster100.uh2u5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     PORT: process.env.PORT || 5000,
     
 };

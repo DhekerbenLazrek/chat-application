@@ -6,7 +6,7 @@
             </div>
             <div class="section__content">
                 <p class="section__lead">We hope you will enjoy our application!</p>
-                <!-- <div class="social">
+                <div class="social">
                     <OAuth
                         provider="facebook"
                         icon="logo-facebook"
@@ -17,7 +17,7 @@
                         icon="logo-googleplus"
                         classes="social__item--google"
                     />
-                </div> -->
+                </div>
                 <form @submit.prevent="handleSubmit" class="form">
                     <span class="form__lead">
                         <ion-icon name="person-add" class="icon"></ion-icon>We always welcome new
@@ -108,7 +108,7 @@ export default {
 
             if (this.username && this.email && this.password) {
                 axios
-                    .post('/api/auth/register', {
+                    .post('http://localhost:5000/api/auth/register', {
                         handle: slugify(this.username.toLowerCase()),
                         username: this.username,
                         email: this.email,

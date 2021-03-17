@@ -94,7 +94,7 @@ export default {
             this.errors = [];
             if (this.email && this.password) {
                 axios
-                    .post('/api/auth/login', {
+                    .post('http://localhost:5000/api/auth/login', {
                         email: this.email,
                         password: this.password
                     })
