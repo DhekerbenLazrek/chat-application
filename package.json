@@ -1,7 +1,7 @@
 {
-  "name": "chat-app",
+  "name": "intorizon",
   "version": "1.0.1",
-  "description": "Chat Application",
+  "description": "intorizon",
   "scripts": {
     "seed:data": "npm run seed --prefix server",
     "client:test": "npm run test --prefix client",
