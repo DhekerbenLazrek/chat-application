@@ -1,3 +1,5 @@
+// const dotenv = require("dotenv");
+// dotenv.config();
 
 /** Dotenv Environment Variables */
 if (process.env.HEROKU_DEPLOYMENT !== 'true') {

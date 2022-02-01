@@ -10,9 +10,9 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'indent': 'off',
         'no-console': 'off',
-        'vue/script-indent': [ {
-            'baseIndent': 1
-        }]
+        // 'vue/script-indent': [ {
+        //     'baseIndent': 1
+        // }]
     },
     parserOptions: {
         parser: 'babel-eslint'

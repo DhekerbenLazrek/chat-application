@@ -5,8 +5,8 @@
                 <span style="color:#fa861a" class="section__title">Register Here</span>
             </div>
             <div class="section__content">
-                <p class="section__lead">We hope you will enjoy our application!</p>
-                <div class="social">
+                
+                <!-- <div class="social">
                     <OAuth
                         provider="facebook"
                         icon="logo-facebook"
@@ -17,7 +17,7 @@
                         icon="logo-googleplus"
                         classes="social__item--google"
                     />
-                </div>
+                </div> -->
                 <form @submit.prevent="handleSubmit" class="form">
                     <span class="form__lead">
                         <ion-icon name="person-add" class="icon"></ion-icon>We always welcome new
@@ -132,7 +132,7 @@ export default {
                             setAuthToken(res.data.token);
 
                             this.$router.push({
-                                name: 'UserProfile',
+                                name: '/Login',
                                 params: { handle: res.data.user.handle }
                             });
                         }

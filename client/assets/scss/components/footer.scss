@@ -14,9 +14,7 @@
         width: 85%;
         margin: 0 auto;
 
-        @include respond(phone) {
-            flex-flow: column;
-        }
+       
     }
 
     &__left {
@@ -24,10 +22,7 @@
         text-align: left;
         align-self: center;
 
-        @include respond(phone) {
-            width: 100%;
-            text-align: center;
-        }
+       
     }
 
     &__right {

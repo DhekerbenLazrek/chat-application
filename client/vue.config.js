@@ -14,13 +14,15 @@ module.exports = {
             }
         }
     },
+
     css: {
         loaderOptions: {
             sass: {
-                data: `@import "@/assets/scss/abstract/mixins.scss";`
+                prependdata: `@import "@/assets/scss/abstract/mixins.scss";`
             }
         }
     },
+
     devServer: {
         proxy: {
             '/api': {
@@ -28,5 +30,9 @@ module.exports = {
                 changeOrigin: true
             }
         }
-    }
+    },
+
+    transpileDependencies: [
+      'vuetify'
+    ]
 };

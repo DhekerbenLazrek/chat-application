@@ -2,9 +2,7 @@
     height: 100%;
 
     &__content {
-        @include respond(phone) {
-            margin-top: 100px;
-        }
+        
     }
 
     &__image {

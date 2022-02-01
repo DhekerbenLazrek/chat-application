@@ -5,9 +5,7 @@
     padding: 1em 0;
     margin: 0 auto;
 
-    @include respond(tablet-landscape) {
-        width: 90%;
-    }
+   
 
     &__link {
         color: rgba(255, 255, 255, 0.7);
@@ -71,9 +69,7 @@
         margin: 0 1em;
         align-items: center;
 
-        @include respond(phone) {
-            display: none;
-        }
+        
 
         &--right {
             flex-grow: 1;
@@ -91,9 +87,6 @@
         justify-content: flex-end;
         cursor: pointer;
 
-        @include respond(phone) {
-            display: initial;
-        }
 
         &--icon {
             font-size: 2em;
@@ -127,8 +120,7 @@
         margin: 0 1em;
         align-items: flex-start;
 
-        @include respond(phone) {
-        }
+        
     }
 
     &__item {
@@ -141,8 +133,6 @@
             font-weight: bold;
         }
 
-        @include respond(phone) {
-            text-align: center;
-        }
+        
     }
 }

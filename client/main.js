@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import vuetify from '@/plugins/vuetify'
 import store from './store';
 import axios from 'axios';
 import io from 'socket.io-client';
 import setAuthToken from './utils/authToken';
 import moment from 'moment';
+
+// import '@/styles/style.css'
+
 
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = ['ion-icons', /^ion-/];
@@ -59,6 +63,7 @@ axios.interceptors.response.use(
 
 new Vue({
     router,
+    vuetify,
     store,
     render: h => h(App)
 }).$mount('#app');

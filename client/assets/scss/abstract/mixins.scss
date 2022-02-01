@@ -1,5 +1,23 @@
-// Media Query Breakpoints
+@import "vendor/rfs";
 
+// Deprecate
+@import "mixins/deprecate";
+
+// Helpers
+@import "mixins/breakpoints";
+@import "mixins/color-scheme";
+@import "mixins/image";
+@import "mixins/resize";
+@import "mixins/visually-hidden";
+@import "mixins/reset-text";
+@import "mixins/text-truncate";
+
+// Utilities
+@import "mixins/utilities";
+// Media Query Breakpoints
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
 /*
 
     0 - 768px: Smartphones
