@@ -2,13 +2,15 @@
     <div class="page profile">
         <section class="section section--profile mt-6 profile__content">
             <div class="section__heading mt-6 mb-3">
-                <span class="section__title">Dashboard</span>
+                <span class="section__title">Welcome into your space</span>
             </div>
             <div class="section__content">
                 <router-link
-                    :to="{name: 'RoomList'}"
-                    class="btn btn--info mt-3 center"
-                >Start Chatting!</router-link>
+                    :to="{name: 'EspaceUtilisateur'}"
+                    class="btn btn--success mt-3 center"
+                >Start !</router-link>
+            <div class="section__content">
+    
                 <div class="infobox__container" v-if="user">
                     <span class="lead">Your current profile</span>
                     <div class="infobox__item" v-if="user.social.id === null">
@@ -40,12 +42,12 @@
                     <div class="infobox__actions mt-3" v-if="user">
                         <router-link
                             :to="{name: 'EditUserProfile', params: { handle: user.handle }}"
-                            class="btn btn--info"
+                            class="btn btn-outline-danger"
                         >Edit Profile</router-link>
                         <a
                             href="#"
                             @click.prevent="handleDeleteModal"
-                            class="btn btn--danger"
+                           class="btn btn-outline-danger"
                         >Delete Account</a>
                     </div>
                 </div>
@@ -60,15 +62,22 @@
                         >Are you sure you want to permanently delete your account?</p>
                         <div class="actions mt-6">
                             <a
-                                href="#"
+                                href="/"
                                 @click.prevent="handleDelete"
-                                class="btn btn--danger"
+                                class="btn btn-outline-danger"
                             >Yes, Delete Account</a>
                         </div>
+                        
+                        
                     </template>
                 </Modal>
             </div>
+            </div>
         </section>
+        <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center" >
+                
+            
+              </div>
     </div>
 </template>
 
@@ -122,4 +131,8 @@ export default {
 <style lang="scss">
 @import '@/assets/scss/views/profile.scss';
 @import '@/assets/scss/components/infobox.scss';
+
+.section__title {
+    color:black;
+}
 </style>

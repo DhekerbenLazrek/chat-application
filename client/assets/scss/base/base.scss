@@ -17,12 +17,12 @@
 html,
 body {
     height: 100%;
-    background: #f6f6f6;
+    background: #ffffff;
     font-family: 'Work Sans', sans-serif;
 }
 
 header {
-    background: #18191c;
+    background: #070707;
     border-bottom: 1px solid #fff;
     width: 100%;
     position: relative;
@@ -227,13 +227,7 @@ li .nav__link.router-link-exact-active {
     }
 
     // Not required??
-    &:first-child {
-        
-    }
-
-    &--mmt {
-        
-    }
+   
 
     &__landing {
         margin: 4em 0 10em 0;

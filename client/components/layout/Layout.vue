@@ -1,80 +1,120 @@
-<template>
-  <v-app id="inspire">
-    <v-app-bar 
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
-      app
-      color="black"
-      dark
-    >
- 
-      <v-toolbar-title
-      >
-        <a href="/" class="white--text" style="text-decoration: none">
+<!--<template>
+    <header>
+        <nav class="nav">
+            <div class="navbar__brand">
+                 <ion-icon name="rocket" class="navbar__icon navbar__icon--logo"></ion-icon> 
+                <router-link to="/" class="navbar__textbrand"></router-link>
+                 <a href="/" class="white--text" style="text-decoration: none">
          <img class="orizon"
             :src="require('../../assets/img/orizon.png')"
           width="150px" height="160px " fixed > 
           </a>
-         
-      </v-toolbar-title>
-      <v-text-field
-      fixed
-        flat
-        solo-inverted
-        hide-details
-        prepend-inner-icon="mdi-magnify"
-        label="Search"
-       
-      >
-      </v-text-field>
-      
-      
-      <v-spacer />
-      
+            </div>
+            <span class="navbar__toggle">
+                <ion-icon
+                    name="menu"
+                    @click="navToggleState = !navToggleState"
+                    class="navbar__icon navbar__toggle--icon"
+                ></ion-icon>
+            </span>
+            <ul class="navbar__nav" v-if="!isAuthorized">
+                <li class="nav__item">
+                    <router-link to="/" class="nav__link"></router-link>
+                </li>
+                
+            </ul>
+            
+            <SignedInLinks :logout="logout" :user="user" v-if="isAuthorized" />
+        </nav>
+        <nav class="snav" v-bind:class="{ 'snav--shown': navToggleState }">
+            <Particle name="particlejs-nav" />
+            <ul class="snav__nav" v-if="!isAuthorized">
+                <li @click="this.closeSideNav" class="snav__item">
+                    <router-link to="/" class="nav__link"> Home</router-link>
+                </li>
+                <li @click="this.closeSideNav" class="snav__item">
+                    <router-link to="/about" class="nav__link">About</router-link>
+                </li>
+                <li @click="this.closeSideNav" class="snav__item">
+                    <router-link to="/login" class="nav__link nav__link--rounded"
+                        >Login</router-link
+                    >
+                </li>
+                <li @click="this.closeSideNav" class="snav__item">
+                    <router-link to="/register" class="nav__link nav__link--rounded"
+                        >Register</router-link
+                    >
+                </li>
+            </ul>
 
-    </v-app-bar>
-    
-    <v-content>
-      <v-bottom-navigation
-        
-        color="black"
-        horizontal
-      >
-        <a href="/" class="v-btn" >
-          <v-btn color ="white">Home</v-btn>
-        </a>
-        <a href="/shop" class="v-btn">
-           <v-btn color ="white">Shop</v-btn>
-        </a>
-        <a href="/product" class="v-btn">
-          <v-btn color ="white">Product</v-btn>
-        </a>
-        <v-btn href="/blog">
-          <v-btn color ="white">Blog</v-btn>
-        </v-btn>
-      </v-bottom-navigation>
-    </v-content>
-      <router-view/>
-
-    
-  </v-app>
+            <ul class="snav__nav" v-if="isAuthorized">
+                <li @click="this.closeSideNav" class="snav__item">
+                    <router-link
+                        v-if="Object.keys(user).length > 0"
+                        :to="{ name: 'UserProfile', params: { handle: user.handle } }"
+                        class="nav__link nav__link--rounded"
+                        >{{ user.handle }}</router-link
+                    >
+                </li>
+                <li @click="this.closeSideNav" class="snav__item">
+                    <button
+                        @click.prevent="logout"
+                        class="nav__link nav__link--btn nav__link--rounded"
+                    >
+                        Logout
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
 </template>
+
 <script>
-   
-    export default {
-       name: "App",
-      components: {
-  
-  },
-     data: () => ({
-    drawer: null,
-    
-  }),
-  
+import { mapActions, mapGetters } from 'vuex';
+import Particle from '@/components/layout/Particle.vue';
+import SignedInLinks from '@/components/layout/SignedInLinks.vue';
+
+export default {
+    name: 'Navbar',
+    components: {
+        Particle: Particle,
+        SignedInLinks
+    },
+    data: function() {
+        return {
+            navToggleState: false
+        };
+    },
+    computed: {
+        ...mapGetters(['getUserData', 'isAuthorized']),
+        user() {
+            return this.getUserData;
+        }
+    },
+    methods: {
+        ...mapActions(['toggleAuthState']),
+        closeSideNav() {
+            this.navToggleState = false;
+        },
+        logout() {
+            if (localStorage.getItem('authToken')) {
+                localStorage.clear();
+                this.$store.dispatch('toggleAuthState', false);
+                this.$router.push({ name: 'Login' });
+            }
+        }
+    },
+    created() {
+        if (localStorage.getItem('authToken')) {
+            this.$store.dispatch('toggleAuthState', true);
+        } else {
+            localStorage.clear();
+            this.$store.dispatch('toggleAuthState', false);
+        }
     }
+};
 </script>
 
-<style> 
-
-.container-scoped{ position: absolute; top: -50px; right: 30px }
-.orizon{ position: static;}
+<style lang="scss" scoped>
+@import '@/assets/scss/components/navbar.scss';
 </style>

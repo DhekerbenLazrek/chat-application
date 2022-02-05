@@ -38,13 +38,12 @@
         "vue-server-renderer": "^2.6.10"
     },
     "devDependencies": {
-        "eslint": "^5.9.0",
-        "eslint-config-prettier": "^3.3.0",
-        "eslint-plugin-prettier": "^3.0.0",
+        
+       
         "jest": "^23.6.0",
         "morgan": "^1.9.1",
         "nodemon": "^1.18.9",
-        "prettier": "^1.15.3",
+       
         "supertest": "^3.3.0",
         "winston": "^3.3.3"
     }

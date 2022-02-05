@@ -73,7 +73,7 @@ export default {
             this.close();
             this.disabled = false;
             this.$router.push({
-                name: 'UserProfile',
+                name: 'Login',
                 params: { handle: data.user.handle }
             });
         });

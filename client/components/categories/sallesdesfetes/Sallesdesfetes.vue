@@ -97,14 +97,42 @@
   </div>
   <!-- card 3 -->
 <div class="col-md-4 col-sm-4 col-xs-10">
-  <v-card
+  <!-- <v-card
     class="mx-auto"
     max-width="344"
   >
-    <v-img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkpusNmImHnvWpr35vMpRxPJsx0l7-Auz2Mw&usqp=CAU"
-      height="200px"
-    ></v-img>
+    <v-carousel
+    cycle
+    max-width="344"
+    width="200"
+    hide-delimiter-background
+    show-arrows-on-hover
+  >
+    <v-carousel-item
+        :src="require('../assets/img/newone.jpg')"
+      >
+        <v-row
+          class="fill-height"
+          align="center"
+          justify="center"
+        >
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"></div>
+        </v-row>
+      </v-carousel-item>
+      <v-carousel-item
+        :src="require('../assets/img/newone.jpg')"
+      >
+        <v-row
+          class="fill-height"
+          align="center"
+          justify="center"
+        >
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"></div>
+        </v-row>
+      </v-carousel-item>
+      
+      
+  </v-carousel>
 
     <v-card-title>
       Le Serail
@@ -141,8 +169,8 @@
         </v-card-text>
       </div>
     </v-expand-transition>
-  </v-card>
-  </div>
+  </v-card> -->
+  </div> 
   
   
   
@@ -178,7 +206,7 @@ import axios from "axios";
 
 
     async mounted() {
-    const response = await axios.get("http://localhost:4000/api/Salle");
+    const response = await axios.get("http://localhost:5000/api/Salle");
     console.log(response.data)
     this.salles = response.data;
   },

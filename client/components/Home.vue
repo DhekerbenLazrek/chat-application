@@ -1,94 +1,44 @@
 <template>
   <div>
-    <v-carousel
-    cycle
-    height="300"
-    width="200"
-    hide-delimiter-background
-    show-arrows-on-hover
-  >
-    <v-carousel-item
-        :src="require('../assets/img/slider4.jpg')"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"></div>
-        </v-row>
-      </v-carousel-item>
-      <v-carousel-item
-        :src="require('../assets/img/slider2.jpg')"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"></div>
-        </v-row>
-      </v-carousel-item>
-      <v-carousel-item
-        :src="require('../assets/img/slider3.jpg')"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"></div>
-        </v-row>
-      </v-carousel-item>
-      <v-carousel-item
-        :src="require('../assets/img/oriz.png')"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"></div>
-        </v-row>
-      </v-carousel-item>
-  </v-carousel>
-   
+  <Slide/>
 <br> 
+<!-- TOP PICKS CARD -->
     <div class="pl-6 pr-6 row">
       <div
        class="col-md-6 col-sm-6 col-xs-12"
       >
-        <v-card>
+         <v-card >
 
           <v-img
             :src="require('../assets/img/toppicks.jpg')"
             class="white--text align-center"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="350px"
+            height="320px"
           >
-           <h1 class="text-center font-size">Top Picks</h1>
+           <h1 class="centered">Top Picks</h1>
             <div class="text-center">
-              <v-btn  href="/shop" class="white--text " outlined>SHOP NOW</v-btn>
+              <button href="/shop" class="button button1" outlined>SHOP NOW</button>
             </div>
           </v-img>
         </v-card>
-<!--        </v-hover>-->
       </div>
 
+<!-- WHATS NEW CARD -->
       <div
         class="col-md-6 col-sm-6 col-xs-12"
       >
         <v-card>
           <v-img
-            :src="require('../assets/img/new.jpg')"
+            :src="require('../assets/img/Capnew.png')"
             class="white--text align-center"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="350px"
+            height="320px"
           >
-            <h1 class="text-center font-size"></h1>
+            <h1 class="centered">New</h1>
+            
             <div class="text-center">
               <v-spacer />
-              <v-btn  href="/shop" class="white--text" outlined>SHOP NOW</v-btn>
+               <button href="/shop" class="button button1" outlined>SHOP NOW</button>
             </div>
           </v-img>
         </v-card>
@@ -96,74 +46,71 @@
     </div>
 <!-- les cotées -->
     <div class="pl-10 pr-8 row">
+      <!-- CATEGORIES -->
       <div
        class="col-md-3 col-sm-3 col-xs-12"
       >
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-                >
-        <v-card class="pa-1 rounded-circle d-inline-block"  :elevation="hover ? 16 : 2" :class="{ 'on-hover': hover }">
+        <card class="pa-1 rounded-circle d-inline-block">
           <v-img
             :src="require('../assets/img/deal2.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="210px"
-            width="220px"
+            height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size">Salles des fetes </h3>
+            <h3 class="centered">Salles des fetes </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/Sallesdesfetes" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+        <router-link to="/sallesdesfetes" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
-         </v-hover>
+        </card>
       </div>
-      
-
+      <!-- ORCHESTRES -->
       <div
         class="col-md-3 col-sm-3 col-xs-12"
       >
+      
       <v-hover
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card class="pa-1 rounded-circle d-inline-block"  :elevation="hover ? 16 : 2">
+        <card class="pa-1 rounded-circle d-inline-block"  :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/cars.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="210px"
-            width="220px"
+            height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size">Orchestres</h3>
+            <h3 class="centered">Orchestres</h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/Orchestres" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+             <router-link to="/orchestres" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
       </div>
+
 
       <div class="col-md-3 col-sm-3 col-xs-12">
       <v-hover
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/band.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size">Soulamia/Issawia</h3>
+            <h3 class="centered">Soulamia/Issawia</h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/Soulamia" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+               <router-link to="/Soulamia" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
 
@@ -172,20 +119,20 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/salle.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Hadhra </h3>
+            <h3 class="centered"> Hadhra </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+           <router-link to="/Hadhra" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
 
@@ -194,20 +141,20 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/beauty.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Organiste & Disceur(dj) </h3>
+            <h3 class="centered"> Organiste & Disceur(dj) </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+               <router-link to="/Disceur" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
       
@@ -216,20 +163,20 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/restaurant.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Locations des maisons de marriage </h3>
+            <h3 class="centered"> Locations des maisons de marriage </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+           <router-link to="/Locationmaison" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
 
@@ -238,20 +185,20 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/restaurant.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Locations des voitures de marriage </h3>
+            <h3 class="centered"> Locations des voitures de marriage </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <router-link to="/Locationvoiture" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
          <div class="col-md-3 col-sm-3 col-xs-12">
@@ -259,20 +206,21 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/restaurant.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Sallon de coiffure et SPA </h3>
+            <h3 class="centered"> Sallon de coiffure et SPA </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <router-link to="/Coiffurespa" class="buttonn">RESERVE NOW</router-link>
+              
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12">
@@ -280,20 +228,20 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/beauty.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Traiteur </h3>
+            <h3 class="centered"> Traiteur </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <router-link to="/Traiteur" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
          </v-hover>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12">
@@ -301,20 +249,20 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/beauty.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Photographe pour marriage </h3>
+            <h3 class="centered"> Photographe pour marriage </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <router-link to="/Photomarriage" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
 
@@ -323,20 +271,20 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/beauty.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+             height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Salés & Sucrés  </h3>
+            <h3 class="centered"> Salés & Sucrés  </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <router-link to="/Hloudraggi" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12">
@@ -344,20 +292,20 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/beauty.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Décoration du marriage  </h3>
+            <h3 class="centered"> Décoration du marriage  </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <router-link to="/Decorationmarriage" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
 
@@ -366,183 +314,40 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/beauty.jpg')"
-            class="white--text align-center"
+            class="rounded-circle"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-             height="210px"
-            width="220px"
+              height="230px"
+            width="230px"
           >
-            <h3 class="text-center font-size"> Fleuriste  </h3>
+            <h3 class="centered"> Fleuriste  </h3>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <router-link to="/Fleuriste" class="buttonn">RESERVE NOW</router-link>
             </div>
           </v-img>
-        </v-card>
+        </card>
         </v-hover>
         </div>
-
-
     </div> 
-    <v-container>
-      <v-row no-gutters>
-        <v-col :cols="12">
-          <v-card-text
-            class=""
-            tile
-            outlined
-          >
-            <v-card-title class="subheading ">Deals of the Day</v-card-title>
-            <v-divider></v-divider>
-            <div class="row">
-              <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center">
-                <v-hover
-                  v-slot:default="{ hover }"
-                  open-delay="200"
-                >
-                  <v-card
-                    :elevation="hover ? 16 : 2"
-                >
-                  <v-img
-                    class="white--text align-end"
-                    height="200px"
-                    :src="require('../assets/img/deal1.jpg')"
-                  >
-                    <v-card-title>Bags & Purses </v-card-title>
-                  </v-img>
 
-                  <v-card-text class="text--primary text-center">
-                    
-                    <div>Baggit, Zara, Fossil</div>
-                  </v-card-text>
 
-                  <div class="text-center">
-                    <v-btn
-                      href="/shop"
-                      class="ma-2"
-                      outlined
-                      color="info"
-                    >
-                      Explore
-                    </v-btn>
-                    
-                  </div>
-                </v-card>
-                </v-hover>
-              </div>
-              <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center" >
-                <v-hover
-                  v-slot:default="{ hover }"
-                  open-delay="200"
-                >
-                  <v-card
-                    :elevation="hover ? 16 : 2"
-                  >
-                  <v-img
-                    class="white--text align-end"
-                    height="200px"
-                    :src="require('../assets/img/deal2.jpg')"
-                  >
-                    <v-card-title>T-Shirt </v-card-title>
-                  </v-img>
-
-                  <v-card-text class="text--primary text-center">
-                    <div>Upto 50%</div>
-                    <div>Zara, Selected, Celio</div>
-                  </v-card-text>
-
-                  <div class="text-center">
-                    <v-btn href="/shop"
-                      class="ma-2"
-                      outlined
-                      color="info"
-                    >
-                      Explore
-                    </v-btn>
-                    
-                  </div>
-                </v-card>
-                </v-hover>
-              </div>
-              <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center" >
-                <v-hover
-                  v-slot:default="{ hover }"
-                  open-delay="200"
-                >
-                  <v-card
-                    :elevation="hover ? 16 : 2"
-                  >
-                  <v-img
-                    class="white--text align-end"
-                    height="200px"
-                    :src="require('../assets/img/deal3.jpg')"
-                  >
-                    <v-card-title>Jeans </v-card-title>
-                  </v-img>
-                  <v-card-text class="text--primary text-center">
-                    <div>Jack & Jones, Levis</div>
-                  </v-card-text>
-                  <div class="text-center">
-                    <v-btn href="/shop"
-                      class="ma-2"
-                      outlined
-                      color="info"
-                    >
-                      Explore
-                    </v-btn>
-                  </div>
-                </v-card>
-                </v-hover>
-              </div>
-              <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center" >
-                <v-hover
-                  v-slot:default="{ hover }"
-                  open-delay="200"
-                >
-                  <v-card
-                    :elevation="hover ? 16 : 2"
-                  >
-                  <v-img
-                    class="white--text align-end"
-                    height="200px"
-                    :src="require('../assets/img/deal4.jpg')"
-                  >
-                    <v-card-title>Shoes </v-card-title>
-                  </v-img>
-
-                  <v-card-text class="text--primary text-center">
-                    
-                    <div>Nike, Adidas, Puma</div>
-                  </v-card-text>
-
-                  <div class="text-center">
-                    <v-btn href="/shop"
-                      class="ma-2"
-                      outlined
-                      color="info"
-                    >
-                      Explore
-                    </v-btn>
-                  </div>
-                </v-card>
-                </v-hover>
-              </div>
-            </div>
-          </v-card-text>
-        </v-col>
-      </v-row>
-    </v-container>
-    
+    <Dealsofday/>
   </div>
 </template>
 
 
 <script>
-
+import Slide from '@/components/slide/Slide.vue';
+import Dealsofday from '@/components/dealsofday/Dealsofday.vue';
     export default {
-      
-        data () {
+      name:"",
+     components: {
+       Slide,
+       Dealsofday
+     },
+        data :() => {
             return {
                 items: [
                     { title: 'Click Me' },
@@ -555,6 +360,9 @@
                 
             }
         },
+            methods () {
+              
+            }
     }
 </script>
 <style>
@@ -566,8 +374,69 @@
     position: absolute;
     width: 100%;
   }
-.rounded-corner{
-  border-radius:120px;
-  scroll-padding-inline:40px;
+.rounded-circle {
+  border-radius:320%;
+  scroll-padding-inline:40%;
 }
+
+  .rounded-card {
+      border-radius: 240px;
+  }
+  .v-card--shaped {
+  border-radius: 24px 4px;
+}
+.centered{
+  color: white;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 190px -70px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: transparent; 
+  color: white; 
+  border: 2px solid #fafafafd;
+}
+
+.button1:hover {
+  background-color: #000000;
+  color: white;
+}
+
+ .buttonn {
+  border-radius: 100px;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 11px;
+  margin: 150px -60px;
+  transition-duration: 0.4s;
+  cursor: pointer ;
+  background-color: transparent; 
+  color: white; 
+  border: 2px solid #fafafafd;
+}
+
+.buttonn:hover {
+  background-color: #080808;
+  color: white;
+} 
+
+
 </style>

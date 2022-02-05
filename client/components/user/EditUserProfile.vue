@@ -120,7 +120,7 @@ export default {
                             await this.$store.dispatch('saveUserData', res.data.user);
                             this.user = res.data.user;
                             this.$router.push({
-                                name: 'UserProfile',
+                                name: 'Login',
                                 params: {
                                     handle:
                                         updatedUserDetails.handle === null

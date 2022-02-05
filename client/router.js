@@ -3,7 +3,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import { checkUserData } from './helpers/user';
 import store from './store';
-import 'vuetify/dist/vuetify.min.css'
+// import 'vuetify/dist/vuetify.min.css'
 
 
 Vue.use(Router);
@@ -20,12 +20,31 @@ const router = new Router({
             component: () => import('@/components/Home.vue'),
             
         },
+       
         {
             path: '/',
-            name: 'Layout',
-            component: () => import('@/components/layout/Layout.vue'),
+            name: 'Navbar',
+            component: () => import('@/components/layout/Navbar.vue'),
             
         },
+        {
+                path: '/',
+                name: 'Footer',
+                component: () => import('@/components/layout/Footer.vue'),
+                
+            },
+            {
+                path: '/slide',
+                name: 'Slide',
+                component: () => import('@/components/slide/Slide.vue'),
+                
+            },
+            {
+                path: '/dealsofday',
+                name: 'Dealsofday',
+                component: () => import('@/components/dealsofday/Dealsofday.vue'),
+                
+            },
        
         {
             path: '/login',
@@ -104,9 +123,9 @@ const router = new Router({
             props: true,
          },
           {
-            path: '/locationmarriage',
-            name: 'Locationmarriage',
-            component: () => import('@/components/categories/locationmarriage/Locationmarriage.vue'),
+            path: '/locationvoiture',
+            name: 'Locationvoiture',
+            component: () => import('@/components/categories/locationvoiture/Locationvoiture.vue'),
             props: true,
          },
          {
@@ -159,8 +178,7 @@ const router = new Router({
             props: true,
             meta: {
                 requiresAuth: true,
-                transitionName: 'router-anim',
-                enterActive: 'animated fadeIn'
+               
             }
         },
        
@@ -179,7 +197,7 @@ router.beforeEach(async (to, from, next) => {
             localStorage.clear();
             next({
                 name: 'Login',
-                params: { message: 'You are unauthorized, Please login or make an account to access' }
+                params: { message: 'Please login or make an account to access' }
             });
         } else {
             next();

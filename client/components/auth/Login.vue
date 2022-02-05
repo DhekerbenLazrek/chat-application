@@ -7,18 +7,7 @@
             <div class="section__content">
                 <Error :errorMessage="errorMessage" />
                 <p class="section__lead">Welcome Back!</p>
-                <!-- <div class="social">
-                    <OAuth
-                        provider="facebook"
-                        icon="logo-facebook"
-                        classes="social__item--facebook"
-                    />
-                    <OAuth
-                        provider="google"
-                        icon="logo-googleplus"
-                        classes="social__item--google"
-                    />
-                </div> -->
+               
                 <form @submit.prevent="handleSubmit" class="form">
                     <span class="form__lead">
                         <ion-icon name="rocket" class="icon"></ion-icon>We are excited to see you
@@ -94,7 +83,7 @@ export default {
             this.errors = [];
             if (this.email && this.password) {
                 axios
-                    .post('http://localhost:5000/api/auth/login', {
+                    .post('/api/auth/login', {
                         email: this.email,
                         password: this.password
                     })
@@ -116,7 +105,7 @@ export default {
                             setAuthToken(res.data.token);
 
                             this.$router.push({
-                                name: 'UserProfile',
+                                name: 'EspaceUtilisateur',
                                 params: { handle: res.data.user.handle }
                             });
                         }

@@ -5,19 +5,6 @@
                 <span style="color:#fa861a" class="section__title">Register Here</span>
             </div>
             <div class="section__content">
-                
-                <!-- <div class="social">
-                    <OAuth
-                        provider="facebook"
-                        icon="logo-facebook"
-                        classes="social__item--facebook"
-                    />
-                    <OAuth
-                        provider="google"
-                        icon="logo-googleplus"
-                        classes="social__item--google"
-                    />
-                </div> -->
                 <form @submit.prevent="handleSubmit" class="form">
                     <span class="form__lead">
                         <ion-icon name="person-add" class="icon"></ion-icon>We always welcome new
@@ -108,7 +95,7 @@ export default {
 
             if (this.username && this.email && this.password) {
                 axios
-                    .post('http://localhost:5000/api/auth/register', {
+                    .post('/api/auth/register', {
                         handle: slugify(this.username.toLowerCase()),
                         username: this.username,
                         email: this.email,
@@ -132,7 +119,7 @@ export default {
                             setAuthToken(res.data.token);
 
                             this.$router.push({
-                                name: '/Login',
+                                name: 'Login',
                                 params: { handle: res.data.user.handle }
                             });
                         }

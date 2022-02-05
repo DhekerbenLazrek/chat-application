@@ -1,7 +1,22 @@
 <template>
+                
+        <div>
+                <span class="btn btn--light">
+                    <router-link to="/" class="nav__link">Home</router-link>
+                </span>
+                <span class="btn btn--light">
+                    <router-link to="/" class="nav__link">Shop</router-link>
+                </span>
+                <span class="btn btn--light">
+                    <router-link to="/" class="nav__link">Blog</router-link>
+                </span>
+                <br> 
+                 <br>
+               
     <ul class="navbar__nav navbar__nav--right">
+            
         <li class="nav__item">
-            <router-link to="/rooms" class="nav__link nav__link--rounded">Rooms</router-link>
+            <router-link to="/rooms" class="nav__link nav__link--rounded">mes reservations </router-link>
         </li>
         <li class="nav__item">
             <router-link
@@ -17,6 +32,7 @@
             >Logout</button>
         </li>
     </ul>
+    </div>
 </template>
 
 <script>

@@ -3,7 +3,11 @@
         <nav class="nav">
             <div class="navbar__brand">
                 <!-- <ion-icon name="rocket" class="navbar__icon navbar__icon--logo"></ion-icon> -->
-                <router-link to="/" class="navbar__textbrand"> Chat App</router-link>
+                   <a href="/" class="white--text" style="text-decoration: none">
+         <img class="orizon"
+            :src="require('../../assets/img/orizon.png')"
+          width="150px" height="160px " fixed > 
+          </a>
             </div>
             <span class="navbar__toggle">
                 <ion-icon
@@ -15,6 +19,12 @@
             <ul class="navbar__nav" v-if="!isAuthorized">
                 <li class="nav__item">
                     <router-link to="/" class="nav__link">Home</router-link>
+                </li>
+                <li class="nav__item">
+                    <router-link to="/" class="nav__link">Shop</router-link>
+                </li>
+                <li class="nav__item">
+                    <router-link to="/" class="nav__link">Blog</router-link>
                 </li>
                
             </ul>
@@ -31,7 +41,7 @@
                 </li>
                 <li class="nav__item">
                     <router-link to="/register" class="nav__link nav__link--rounded"
-                        >Sign Up</router-link
+                        >Register</router-link
                     >
                 </li>
             </ul>
@@ -81,7 +91,6 @@
 import { mapActions, mapGetters } from 'vuex';
 import Particle from '@/components/layout/Particle.vue';
 import SignedInLinks from '@/components/layout/SignedInLinks.vue';
-
 export default {
     name: 'Navbar',
     components: {
