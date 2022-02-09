@@ -2,8 +2,8 @@
     <div id="app" class="app">
  
         <Navbar/>
-       <router-view/>
         <Footer/>
+       
          <!-- <Particle name="particle-js"/> -->
         <!-- <transition
             :name="transitionName"

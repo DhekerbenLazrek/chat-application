@@ -1,323 +1,165 @@
 <template>
-  <v-stepper
-    v-model="e6"
-    vertical
-  >
-    <v-stepper-step
-      :complete="e6 > 1"
-      step="1"
-    >
-      Compte Utilisateur
-      
-    </v-stepper-step>
+    <div id="espaceutilisateur">
+       
+        <section class="section" style="padding-top: .5rem">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        <horizontal-stepper :steps="demoSteps" @completed-step="completeStep" :top-buttons="true"
+                        @active-step="isStepActive" @stepper-finished="alert"></horizontal-stepper>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <v-stepper-content step="1">
-      <v-card
-        color="white"
-        width="300px"
-        height="600px">
-
-        <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="name"
-      :rules="nameRules"
-      label="Name"
-      required
-    ></v-text-field>
-      <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="mobile"
-      :rules="mobileRules"
-      label="Mobile"
-      required
-    ></v-text-field>
-      <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="adresseemail"
-      :rules="adresseemailRules"
-      label="Adresse Email"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="retaperadresseemail"
-      :rules="retaperadresseemailRules"
-      label=" Retaper Adresse Email"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="retaperadresseemail"
-      :rules="retaperadresseemailRules"
-      label=" Retaper Adresse Email"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      label="Password"
-      :type="showPassword ? 'text' : 'password'"
-      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-      @click:append="showPassword = !showPassword"
-      v-model="password"
-      :rules="passwordRules"
-      error-count="1"
-      required
-      ></v-text-field>
-      <v-text-field
-      solo
-      outlined
-      clearable
-      label="Repeat Password"
-      :type="showPassword ? 'text' : 'password'"
-      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-      @click:append="showPassword = !showPassword"
-      v-model="repeatpassword"
-      :rules="repeatpasswordRules"
-      error-count="1"
-      required
-      ></v-text-field>
-    
-      </v-card>
-
-      <v-btn
-        color="primary"
-        @click="e6 = 2"
-      >
-        Continue
-      </v-btn>
-      <v-btn text>
-        Cancel
-      </v-btn>
-    </v-stepper-content>
-
-    <v-stepper-step
-      :complete="e6 > 2"
-      step="2"
-    >
-      Informations D'affaire
-    </v-stepper-step>
-
-    <v-stepper-content step="2">
-      <v-card
-        color="white"
-        width="300px"
-        height="600px">
-<small> Ajouter les inforamtions Professionnelles </small>
-        <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="nomproduit"
-      :rules="nomproduit"
-      label=" Nom du Produit"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="nomsociete"
-      :rules="nomsociete"
-      label=" Nom de la societé/Raison social"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="adresse"
-      :rules="adresse"
-      label=" Adresse"
-      required
-    ></v-text-field>
-     <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="codepostale"
-      :rules="codepostale"
-      label=" Code Postal"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="ville"
-      :rules="ville"
-      label=" Ville"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="pays"
-      :rules="pays"
-      label=" Pays"
-      required
-    ></v-text-field>
-      
-    
-      </v-card>
-      <v-btn
-        color="primary"
-        @click="e6 = 3"
-      >
-        Continue
-      </v-btn>
-      <v-btn text>
-        Cancel
-      </v-btn>
-    </v-stepper-content>
-
-    <v-stepper-step
-      :complete="e6 > 3"
-      step="3"
-    >
-      Compte Bancaire 
-    </v-stepper-step>
-
-    <v-stepper-content step="3">
-      <v-card
-        color="white"
-        width="300px"
-        height="600px">
-        <small> Ajouter les inforamtions de votre compte bancaire </small>
-
-        <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="titulairecompte"
-      :rules="titulairecompte"
-      label=" Titulaire du Compte"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="numerocompte"
-      :rules="numerocompte"
-      label=" Numero du Compte Bancaire"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="nombanque"
-      :rules="nombanque"
-      label=" Nom de la Banque"
-      required
-    ></v-text-field>
-     <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="codepostale"
-      :rules="codepostale"
-      label=" Code Postal"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="codeiban"
-      :rules="codeiban"
-      label=" Code I ban"
-      required
-    ></v-text-field>
-    <v-text-field
-      solo
-      outlined
-      clearable
-      v-model="codeswift"
-      :rules="codeswift"
-      label=" Code Swift"
-      required
-    ></v-text-field>
-      
-      </v-card>
-      <v-btn
-        color="primary"
-        @click="e6 = 4"
-      >
-        Continue
-      </v-btn>
-      <v-btn text>
-        Cancel
-      </v-btn>
-    </v-stepper-content>
-
-    <v-stepper-step step="4">
-      View setup instructions
-    </v-stepper-step>
-    <v-stepper-content step="4">
-      <v-card
-        color="grey lighten-1"
-        class="mb-12"
-        height="200px"
-      ></v-card>
-      <br>
-      <v-checkbox
-      v-model="checkbox"
-      :rules="[v => !!v || 'You must agree to continue!']"
-      label="Do you agree to all the conditions?"
-      required
-    ></v-checkbox>
-      <v-btn
-       :disabled="!valid"
-        color="primary"
-        @click="validate"
-      >
-        Continue
-      </v-btn>
-      <v-btn text>
-        Cancel
-      </v-btn>
-    </v-stepper-content>
-  </v-stepper>
+        
+    </div>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        e6: 1,
-        valid: true,
-        password: "",
-      passwordRules: [
-        ($v) => !!$v || "Password is required",
-        ($v) => ($v && $v.length >= 8) || "Password must have 8+ characters",
-        ($v) => /(?=.*[A-Z])/.test($v) || "Must have one uppercase character",
-        ($v) => /(?=.*\d)/.test($v) || "Must have one number",
-        ($v) =>
-          /([!@$%])/.test($v) || "Must have one special character [!@#$%]",
-      ],
-      showPassword: false,
-      error: "",
-      }
-      
-    },
-     methods: {
-      validate () {
-        this.$refs.form.validate()
-      },
+    import HorizontalStepper from './HorizontalStepper.vue';
+
+    import StepOne from './StepOne.vue';
+    import StepTwo from './StepTwo.vue';
+
+    const teamUrl = 'https://github.com/PygmySlowLoris';
+    const repoUrl = 'https://github.com/PygmySlowLoris/vue-stepper';
+
+    export default {
+        name: 'espaceutilisateur',
+        components: {
+            HorizontalStepper
+        },
+        data(){
+            return {
+                repoUrl: repoUrl,
+                teamUrl: teamUrl,
+                demoSteps: [
+                    {
+                        icon: 'mail',
+                        name: 'first',
+                        title: 'Sample title 1',
+                        subtitle: 'Subtitle sample',
+                        component: StepOne,
+                        completed: false
+
+                    },
+                    {
+                        icon: 'report_problem',
+                        name: 'second',
+                        title: 'Sample title 2',
+                        subtitle: 'Subtitle sample',
+                        component: StepTwo,
+                        completed: false
+                    },
+                    {
+                        icon: 'announcement',
+                        name: 'third',
+                        title: 'Sample title 3',
+                        subtitle: 'Subtitle sample',
+                        component: StepOne,
+                        completed: false
+                    }
+                ],
+                activeStep: 0
+            }
+        },
+        computed: {},
+        methods: {
+            completeStep(payload) {
+                this.demoSteps.forEach((step) => {
+                    if (step.name === payload.name) {
+                        step.completed = true;
+                    }
+                })
+            },
+            isStepActive(payload) {
+                this.demoSteps.forEach((step) => {
+                    if (step.name === payload.name) {
+                        if(step.completed === true) {
+                            step.completed = false;
+                        }
+                    }
+                })
+            },
+            alert(payload) {
+                alert('end')
+            }
+        }
     }
-  }
 </script>
+
+<style scoped>
+    #espaceutilisateur {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    .pointer {
+        cursor: pointer;
+    }
+
+    h1, h2 {
+        font-weight: normal;
+    }
+
+    hr {
+        background-color: transparent;
+        border: none;
+        display: block;
+        height: inherit;
+        margin: 1.5rem 0;
+        border-top: dashed 1px;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    a {
+        color: #0b99b9;
+        text-decoration: underline;
+    }
+
+    .text-medium-grey {
+        color: #333;
+    }
+
+    .text-light-grey {
+        color: #888;
+    }
+
+    .box.formated {
+        position: relative;
+        padding: 0;
+    }
+
+    .box.formated .heading {
+        font-size: 1rem;
+        text-transform: capitalize;
+        padding: .8rem 1.5rem;
+        background-color: #fafafa;
+    }
+
+    .box.formated .content {
+        padding: 1rem 2rem;
+    }
+
+    i.top-left {
+        position: absolute;
+        left: 1.5rem;
+        top: 0.8rem;
+    }
+
+    .vertical-separator {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .vertical-separator .line {
+        border-right: 1px solid #cccccc;
+    }
+</style>

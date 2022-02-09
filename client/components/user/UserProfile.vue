@@ -6,7 +6,7 @@
             </div>
             <div class="section__content">
                 <router-link
-                    :to="{name: 'EspaceUtilisateur'}"
+                    :to="{name: 'Dashboardutilisateur'}"
                     class="btn btn--success mt-3 center"
                 >Start !</router-link>
             <div class="section__content">

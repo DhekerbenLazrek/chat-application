@@ -1,8 +1,8 @@
-<template>
+<!--<template>
   <v-app id="inspire">
     <v-navigation-drawer
       v-model="drawer"
-      app
+    app
     >
 
       <v-list-item>
@@ -93,18 +93,17 @@
       permanent
       color="black"
       dark
-      
     >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-app-bar-title>
+      <v-toolbar-title>
           <a href="/" class="white--text" style="text-decoration: none">
          <img class="orizon"
             :src="require('../../assets/img/orizon.png')"
           width="130px" height="110px " > 
           </a>
 
-      </v-app-bar-title>
+      </v-toolbar-title>
        <v-autocomplete
       v-model="select"
       :loading="loading"
@@ -121,7 +120,7 @@
       <v-spacer />
     </v-app-bar>
 
-    <v-content>
+    <v-main>
        <v-bottom-navigation
         horizontal
       >
@@ -138,12 +137,7 @@
           <span>Blog</span>
         </v-btn>
       </v-bottom-navigation>
-      
-    </v-content>
-
-    <v-main>
-      <router-view> </router-view>
-      </v-main>
+    </v-main>
   </v-app>
 </template>
 

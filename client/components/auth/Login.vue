@@ -105,7 +105,7 @@ export default {
                             setAuthToken(res.data.token);
 
                             this.$router.push({
-                                name: 'EspaceUtilisateur',
+                                name: 'Dashboardutilisateur',
                                 params: { handle: res.data.user.handle }
                             });
                         }

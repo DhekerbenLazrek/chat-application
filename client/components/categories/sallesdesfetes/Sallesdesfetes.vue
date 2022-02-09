@@ -5,11 +5,6 @@
     class="mx-auto"
     max-width="344"
   >
-  <v-img
-      height="200"
-      src="https://img5.findglocal.com/178/451/717362951784510.jpg" 
-    ></v-img>
-
     <v-card-title>
       La Marquise
     </v-card-title>
@@ -17,6 +12,11 @@
     <v-card-subtitle>
       1,000 miles of wonder
     </v-card-subtitle>
+  <v-img
+      height="200"
+      src="https://img5.findglocal.com/178/451/717362951784510.jpg" 
+    ></v-img>
+
 
     <v-card-actions>
       <v-btn
@@ -53,10 +53,6 @@
     class="mx-auto"
     max-width="344"
   >
-    <v-img
-      src="https://i.zafaf.net/providers/2917/preview_fyvzawqwiuribcnzlrbjdpdwb.jpg"
-      height="200px"
-    ></v-img>
 
     <v-card-title>
      Le Palace
@@ -65,6 +61,10 @@
     <v-card-subtitle>
       1,000 miles of wonder
     </v-card-subtitle>
+    <v-img
+      src="https://i.zafaf.net/providers/2917/preview_fyvzawqwiuribcnzlrbjdpdwb.jpg"
+      height="200px"
+    ></v-img>
 
     <v-card-actions>
       <v-btn
@@ -97,50 +97,22 @@
   </div>
   <!-- card 3 -->
 <div class="col-md-4 col-sm-4 col-xs-10">
-  <!-- <v-card
+  <v-card
     class="mx-auto"
     max-width="344"
   >
-    <v-carousel
-    cycle
-    max-width="344"
-    width="200"
-    hide-delimiter-background
-    show-arrows-on-hover
-  >
-    <v-carousel-item
-        :src="require('../assets/img/newone.jpg')"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"></div>
-        </v-row>
-      </v-carousel-item>
-      <v-carousel-item
-        :src="require('../assets/img/newone.jpg')"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"></div>
-        </v-row>
-      </v-carousel-item>
-      
-      
-  </v-carousel>
 
     <v-card-title>
-      Le Serail
+     Le Palace
     </v-card-title>
 
     <v-card-subtitle>
       1,000 miles of wonder
     </v-card-subtitle>
+    <v-img
+      src="https://i.zafaf.net/providers/2917/preview_fyvzawqwiuribcnzlrbjdpdwb.jpg"
+      height="200px"
+    ></v-img>
 
     <v-card-actions>
       <v-btn
@@ -169,8 +141,8 @@
         </v-card-text>
       </div>
     </v-expand-transition>
-  </v-card> -->
-  </div> 
+  </v-card>
+  </div>
   
   
   

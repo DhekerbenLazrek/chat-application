@@ -17,20 +17,6 @@ const UserSchema = new Schema(
             unique: true,
             maxlength: ['15', 'Username should be less than 15 characters']
         },
-        social: {
-            id: {
-                type: String,
-                default: null
-            },
-            image: {
-                type: String,
-                default: null
-            },
-            email: {
-                type: String,
-                default: null
-            }
-        },
         email: {
             type: String,
             trim: true,
@@ -40,6 +26,10 @@ const UserSchema = new Schema(
         password: {
             type: String,
             default: null
+        },
+        status: {
+            type: String,
+            default: "user",
         },
         image: {
             type: String,

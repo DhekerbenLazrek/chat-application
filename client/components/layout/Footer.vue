@@ -2,10 +2,11 @@
    <v-footer
     dark
     padless
+    class="footer"
     
   >
     <v-card
-      class="center"
+      class="footer"
       flat
       tile
       color="black"
@@ -69,7 +70,7 @@ export default {
         'mdi-instagram',
       ],
        links: [
-        'EspaceUtilisateur',
+        'Espace Utilisateur',
         'About Us',
         'Team',
         'Services',
@@ -84,14 +85,14 @@ export default {
 
 <style>
  .footer { 
-    position:relative;
+    
     width: 120%;
     height:10%;
     padding: 1em;
     margin: 0 auto;
     background: rgb(5, 5, 5);
     text-align: center;
-    border-top: 1px solid #fff;
+    border-top: 1px solid rgb(12, 11, 11);
     font-weight: bold;
     text-transform: uppercase;
  }

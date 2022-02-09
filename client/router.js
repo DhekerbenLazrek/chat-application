@@ -40,6 +40,12 @@ const router = new Router({
                 
             },
             {
+                path: '/mavi',
+                name: 'Mavi',
+                component: () => import('@/components/layout/Mavi.vue'),
+                
+            },
+            {
                 path: '/dealsofday',
                 name: 'Dealsofday',
                 component: () => import('@/components/dealsofday/Dealsofday.vue'),
@@ -73,6 +79,41 @@ const router = new Router({
                 requiresAuth: true
             }
         },
+            {
+            path: '/dashboardutilisateur',
+            name: 'Dashboardutilisateur',
+            component: () => import('@/components/dashboardutilisateur/Dashboardutilisateur.vue'), 
+            props: true,
+            meta: {
+                requiresAuth: true
+            }
+            },
+            {
+                path: '/dach',
+                name: 'Dach',
+                component: () => import('@/components/dashboardutilisateur/Dach.vue'), 
+                props: true,
+               
+                },
+            {
+                path: '/reservationsutil',
+                name: 'Reservationsutil',
+                component: () => import('@/components/reservationsutil/Reservationsutil.vue'), 
+                props: true,
+                meta: {
+                    requiresAuth: true
+                }
+                },
+
+                {
+                    path: '/about',
+                    name: 'About',
+                    component: () => import('@/views/About.vue'), 
+                    
+                    
+                },
+
+            
         //categories
          {
             path: '/sallesdesfetes',

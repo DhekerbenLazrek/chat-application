@@ -1,11 +1,12 @@
-<template>
-  <div>
-    <v-carousel
+<!--<template>
+  <div class="ma-12 pa-12">
+<v-carousel
+    id="carousel"
     cycle
-    height="270"
+    height="400"
     width="200"
     hide-delimiter-background
-    
+    show-arrows-on-hover
   >
     <v-carousel-item
         :src="require('../../assets/img/slider4.jpg')"
@@ -52,12 +53,21 @@
         </v-row>
       </v-carousel-item>
   </v-carousel>
-  </div>
-  </template>
+ </div>
+</template>
 
-  
-
-    <script>
-
-
+<script>
+  export default {
+    data () {
+      return {
+        
+      }
+    },
+  }
 </script>
+
+<style> 
+#carousel {
+  top: -70px;
+}
+</style>

@@ -12,6 +12,7 @@
                     </div>
                     <div class="profile__item" v-else>
                         <img :src="user.social.image" alt class="profile__image" />
+                       <img src="https://randomuser.me/api/portraits/women/85.jpg">
                     </div>
                     <br />
                     <div class="form__input-group">
@@ -120,7 +121,7 @@ export default {
                             await this.$store.dispatch('saveUserData', res.data.user);
                             this.user = res.data.user;
                             this.$router.push({
-                                name: 'Login',
+                                name: 'UserProfile',
                                 params: {
                                     handle:
                                         updatedUserDetails.handle === null
