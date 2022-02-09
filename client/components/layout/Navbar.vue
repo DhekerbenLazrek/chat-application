@@ -121,7 +121,7 @@
       <v-spacer />
     </v-app-bar>
 
-    <v-content>
+    <!-- <v-content>
        <v-bottom-navigation
         horizontal
       >
@@ -139,7 +139,7 @@
         </v-btn>
       </v-bottom-navigation>
       
-    </v-content>
+    </v-content> -->
 
     <v-main>
       <router-view> </router-view>
