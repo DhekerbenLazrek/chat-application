@@ -91,3 +91,24 @@
     },
   }
 </script>
+
+<v-app>
+    <v-navigation-drawer clipped permanent app>
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-title class="title">Menu Item #1</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+
+    
+
+    
+
+    <v-content :style="$vuetify.breakpoint.smAndDown ? 'padding-top: 112px' : 'padding-top: 128px'">
+      <v-container fluid>
+        Content
+        <!-- <router-view></router-view> -->
+      </v-container>
+    </v-content>
+  </v-app>

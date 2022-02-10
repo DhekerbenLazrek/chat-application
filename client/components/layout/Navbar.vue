@@ -1,8 +1,11 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer
+      clipped
+      fixed 
+      flat
       v-model="drawer"
-      app
+     
     >
 
       <v-list-item>
@@ -25,7 +28,7 @@
         dense
         nav
       >
-      
+     
          <v-list-item >
               <router-link to="/EspaceUtilisateur" class="buttonrouter">Espace Utilisateur</router-link>
             </v-list-item>
@@ -47,21 +50,19 @@
             
               <router-link to="/Team" class="buttonrouter">Team</router-link>
             </v-list-item>
+           
       </v-list>
+      
 
 <!-- DIVIDER -->
       <v-divider></v-divider>
       <span class="navbar__toggle">
-                <ion-icon
-                    name="menu"
-                    @click="navToggleState = !navToggleState"
-                    class="navbar__icon navbar__toggle--icon"
-                ></ion-icon>
+                
             </span>
            
            
             
-          <div v-bind:class="{ 'snav--shown': navToggleState }">
+          <div>
             <!-- <Particle name="particlejs-nav" /> -->
 
             <div v-if="isAuthorized">
@@ -75,7 +76,7 @@
                     >
                      
                 </button>
-                <div @click="this.closeSideNav" >
+                <div>
                     <button
                         @click.prevent="logout"
                         class="buttonrouter"
@@ -88,9 +89,7 @@
     </v-navigation-drawer>
 
     <v-app-bar 
-    :clipped-left="$vuetify.breakpoint.lgAndUp"
-      app
-      permanent
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
       color="black"
       dark
       
@@ -121,25 +120,26 @@
       <v-spacer />
     </v-app-bar>
 
-    <!-- <v-content>
+    <v-content  :style="$vuetify.breakpoint.smAndDown ? 'padding-top: 100px' : 'padding-top: 68px'">
        <v-bottom-navigation
         horizontal
+        id="navigation"
       >
-        <a href="/" class="v-btn">
+        <v-btn href="/" class="v-btn">
           <span>Home</span>
-        </a>
-        <a href="/shop" class="v-btn">
+        </v-btn>
+        <v-btn href="/shop" class="v-btn">
           <span>Shop</span>
-        </a>
-        <a href="/product" class="v-btn">
+        </v-btn>
+        <v-btn href="/product" class="v-btn">
           <span>Product</span>
-        </a>
+        </v-btn>
         <v-btn href="/blog">
           <span>Blog</span>
         </v-btn>
       </v-bottom-navigation>
       
-    </v-content> -->
+    </v-content>
 
     <v-main>
       <router-view> </router-view>
@@ -239,4 +239,8 @@ export default {
   border: 1px solid #e9e6e6fd;
   
 }
+#navigation{
+  top:-70px;
+}
+
 </style>
