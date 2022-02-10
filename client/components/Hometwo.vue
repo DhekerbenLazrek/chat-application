@@ -92,23 +92,48 @@
   }
 </script>
 
-<v-app>
-    <v-navigation-drawer clipped permanent app>
-      <v-list>
-        <v-list-tile>
-          <v-list-tile-title class="title">Menu Item #1</v-list-tile-title>
-        </v-list-tile>
+<v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            Orizon
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            marriage
+          </v-list-item-subtitle>
+        </v-list-item-content>
+         
+        
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list
+        dense
+        nav
+      >
+      
+
+     
+         <v-list-item >
+              <router-link to="/EspaceUtilisateur" class="buttonrouter">Espace Utilisateur</router-link>
+            </v-list-item>
+            <v-list-item >
+          
+              <router-link to="/Service" class="buttonrouter">Service</router-link>
+            </v-list-item>
+            <v-list-item >
+
+              <router-link to="/About" class="buttonrouter">About</router-link>
+            </v-list-item>
+             <v-list-item >
+              
+            
+              <router-link to="/ContactUs" class="buttonrouter">Contact Us</router-link>
+            </v-list-item>
+             <v-list-item >
+             
+            
+              <router-link to="/Team" class="buttonrouter">Team</router-link>
+            </v-list-item>
+           
       </v-list>
-    </v-navigation-drawer>
-
-    
-
-    
-
-    <v-content :style="$vuetify.breakpoint.smAndDown ? 'padding-top: 112px' : 'padding-top: 128px'">
-      <v-container fluid>
-        Content
-        <!-- <router-view></router-view> -->
-      </v-container>
-    </v-content>
-  </v-app>

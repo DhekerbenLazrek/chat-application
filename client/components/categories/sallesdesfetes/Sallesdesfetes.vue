@@ -2,28 +2,83 @@
  <div class="pl-10 pr-8 row">
 <div class="col-md-4 col-sm-4 col-xs-10">
   <v-card
-    class="mx-auto"
-    max-width="344"
+    id="cards"
+    
   >
     <v-card-title>
+      <div
+      justify="center">
+      
+    <v-avatar class="avatar" color="grey lighten-1" size="37">
+      <v-icon dark>
+        mdi-account-circle
+      </v-icon>
+    </v-avatar>
+ </div>
       La Marquise
     </v-card-title>
-
+    
     <v-card-subtitle>
       1,000 miles of wonder
     </v-card-subtitle>
-  <v-img
-      height="200"
-      src="https://img5.findglocal.com/178/451/717362951784510.jpg" 
-    ></v-img>
+      <v-carousel 
+        class = "inline-block"
+        id="photocarousel"
+        height="200"
+        width="200"
+        cycle
+        hide-delimiter-background
+        show-arrows-on-hover
+      >
+           
+            <v-carousel-item
+              :src="require('../../../assets/img/marquise1.jpg')"
+              
+             id="1"
+            >
+            </v-carousel-item>
+            <v-carousel-item
+              :src="require('../../../assets/img/marquise2.jpg')"
+              @click="goToCar()"
+               id="2"
+            >
+              
+            </v-carousel-item>
+            <v-carousel-item
+              :src="require('../../../assets/img/marquise3.jpg')"
+            @click="goToReservation()"
+              id="3"
+              >
+            </v-carousel-item>
+            <v-carousel-item
+              :src="require('../../../assets/img/marquise4.jpg')"
+              id="4"
+              >
+            </v-carousel-item>
+          </v-carousel>
 
 
     <v-card-actions>
       <v-btn
-        color="orange lighten-2"
+        color="black"
         text
+        small
       >
         Explore
+      </v-btn>
+      <v-btn
+        color="black"
+        text
+        small
+      >
+        Video
+      </v-btn>
+      <v-btn
+        color="black"
+        text
+        small
+      >
+        Reservation
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -50,28 +105,81 @@
 <!-- card 2 -->
 <div class="col-md-4 col-sm-4 col-xs-10">
   <v-card
-    class="mx-auto"
-    max-width="344"
+  id="cards"
+    
   >
-
-    <v-card-title>
-     Le Palace
+  <v-card-title class="cardtitle">
+      <div
+      justify="center">
+      
+    <v-avatar class="avatar" color="grey lighten-1" size="37">
+      <v-icon dark>
+        mdi-account-circle
+      </v-icon>
+    </v-avatar>
+ </div>
+      Le Serail
     </v-card-title>
 
     <v-card-subtitle>
       1,000 miles of wonder
     </v-card-subtitle>
-    <v-img
-      src="https://i.zafaf.net/providers/2917/preview_fyvzawqwiuribcnzlrbjdpdwb.jpg"
-      height="200px"
-    ></v-img>
+    <v-carousel 
+        class = "carousel"
+        height="200"
+        width="200" 
+        cycle
+        hide-delimiter-background
+        show-arrows-on-hover
+      >
+           
+            <v-carousel-item
+              :src="require('../../../assets/img/lepalace1.jpg')"
+              
+             id="1"
+            >
+            </v-carousel-item>
+            <v-carousel-item
+              :src="require('../../../assets/img/lepalace2.jpg')"
+              @click="goToCar()"
+               id="2"
+            >
+              
+            </v-carousel-item>
+            <v-carousel-item
+              :src="require('../../../assets/img/lepalace3.jpg')"
+            @click="goToReservation()"
+              id="3"
+              >
+            </v-carousel-item>
+            <v-carousel-item
+              :src="require('../../../assets/img/lepalace4.jpg')"
+              id="4"
+              >
+            </v-carousel-item>
+          </v-carousel>
 
     <v-card-actions>
       <v-btn
-        color="orange lighten-2"
+        color="black"
         text
+        small
       >
         Explore
+      </v-btn>
+      <v-btn
+        color="black"
+        text
+        small
+      >
+        Video
+      </v-btn>
+      <v-btn
+        color="black"
+        text
+        small
+      >
+        Reservation
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -96,30 +204,80 @@
   </v-card>
   </div>
   <!-- card 3 -->
-<div class="col-md-4 col-sm-4 col-xs-10">
+<div class="col-md-4 col-sm-4 col-xs-10" >
   <v-card
-    class="mx-auto"
-    max-width="344"
+  :elevation="n - 1"
+  id="cards"
+    
   >
-
-    <v-card-title>
-     Le Palace
+  <v-card-title class="cardtitle">
+      <div
+      justify="center">
+      
+    <v-avatar class="avatar" color="grey lighten-1" size="37">
+      <v-icon dark>
+        mdi-account-circle
+      </v-icon>
+    </v-avatar>
+ </div>
+      Le Serail
     </v-card-title>
 
     <v-card-subtitle>
       1,000 miles of wonder
     </v-card-subtitle>
-    <v-img
-      src="https://i.zafaf.net/providers/2917/preview_fyvzawqwiuribcnzlrbjdpdwb.jpg"
-      height="200px"
-    ></v-img>
+    <v-carousel 
+        class = "carousel"
+        height="200"
+        width="200" 
+        cycle
+        hide-delimiter-background
+        show-arrows-on-hover
+      >
+           
+            <v-carousel-item
+              :src="require('../../../assets/img/serail1.jpg')"
+              
+             id="1"
+            >
+            </v-carousel-item>
+            <v-carousel-item
+              :src="require('../../../assets/img/serail2.jpg')"
+              @click="goToCar()"
+               id="2"
+            >
+              
+            </v-carousel-item>
+            <v-carousel-item
+              :src="require('../../../assets/img/serail3.jpg')"
+            @click="goToReservation()"
+              id="3"
+              >
+            </v-carousel-item>
+            
+          </v-carousel>
 
     <v-card-actions>
       <v-btn
-        color="orange lighten-2"
+        color="black"
         text
+        small
       >
         Explore
+      </v-btn>
+      <v-btn
+        color="black"
+        text
+        small
+      >
+        Video
+      </v-btn>
+      <v-btn
+        color="black"
+        text
+        small
+      >
+        Reservation
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -196,9 +354,19 @@ import axios from "axios";
 </script>
 
 <style> 
-/* .mx-auto { 
- width: 600px;
- height:300;
-} */
+.avatar { 
+  
+  padding: 5px -15px;
+  left:-10px;
+  display: inline-block;
+  
+} 
+#cards {
+  
+  top:60px;
+  width: 600px;
+}
+
+
 
 </style>

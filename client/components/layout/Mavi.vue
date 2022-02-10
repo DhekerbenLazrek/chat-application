@@ -49,7 +49,7 @@
             </v-list-item>
       </v-list>
 
-<!-- DIVIDER -->
+<!-- DIVIDER 
       <v-divider></v-divider>
       <span class="navbar__toggle">
                 <ion-icon
@@ -62,7 +62,7 @@
            
             
           <div v-bind:class="{ 'snav--shown': navToggleState }">
-            <!-- <Particle name="particlejs-nav" /> -->
+            <!-- <Particle name="particlejs-nav" /> 
 
             <div v-if="isAuthorized">
              <v-icon>mdi-view-dashboard</v-icon>

@@ -1,108 +1,19 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      clipped
+    <v-app-bar
+    class=".d-flex"
+      app 
       fixed 
-      flat
-      v-model="drawer"
-     
-    >
-
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title">
-            Orizon
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            marriage
-          </v-list-item-subtitle>
-        </v-list-item-content>
-          <button ref="Close" type="button" class="close" 
-        @click="this.closeSideNav"> X  </button>
-        
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list
-        dense
-        nav
-      >
-     
-         <v-list-item >
-              <router-link to="/EspaceUtilisateur" class="buttonrouter">Espace Utilisateur</router-link>
-            </v-list-item>
-            <v-list-item >
-          
-              <router-link to="/Service" class="buttonrouter">Service</router-link>
-            </v-list-item>
-            <v-list-item >
-
-              <router-link to="/About" class="buttonrouter">About</router-link>
-            </v-list-item>
-             <v-list-item >
-              
-            
-              <router-link to="/ContactUs" class="buttonrouter">Contact Us</router-link>
-            </v-list-item>
-             <v-list-item >
-             
-            
-              <router-link to="/Team" class="buttonrouter">Team</router-link>
-            </v-list-item>
-           
-      </v-list>
-      
-
-<!-- DIVIDER -->
-      <v-divider></v-divider>
-      <span class="navbar__toggle">
-                
-            </span>
-           
-           
-            
-          <div>
-            <!-- <Particle name="particlejs-nav" /> -->
-
-            <div v-if="isAuthorized">
-             <v-icon>mdi-view-dashboard</v-icon>
-                <button @click="this.closeSideNav">
-                    <router-link
-                        v-if="Object.keys(user).length > 0"
-                        :to="{ name: 'UserProfile', params: { handle: user.handle } }"
-                        class="buttonrouter"
-                        >{{ user.handle }}</router-link
-                    >
-                     
-                </button>
-                <div>
-                    <button
-                        @click.prevent="logout"
-                        class="buttonrouter"
-                    >
-                        Logout
-                    </button>
-                </div>
-            </div>
-        </div>
-    </v-navigation-drawer>
-
-    <v-app-bar 
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       color="black"
       dark
-      
     >
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-app-bar-title>
-          <a href="/" class="white--text" style="text-decoration: none">
+      <v-app-bar-title permanent>
+          <a href="/" class=".d-flex" style="text-decoration: none">
          <img class="orizon"
             :src="require('../../assets/img/orizon.png')"
           width="130px" height="110px " > 
           </a>
-
       </v-app-bar-title>
        <v-autocomplete
       v-model="select"
@@ -118,28 +29,23 @@
       solo-inverted
     ></v-autocomplete>
       <v-spacer />
-    </v-app-bar>
-
-    <v-content  :style="$vuetify.breakpoint.smAndDown ? 'padding-top: 100px' : 'padding-top: 68px'">
-       <v-bottom-navigation
-        horizontal
-        id="navigation"
-      >
-        <v-btn href="/" class="v-btn">
-          <span>Home</span>
-        </v-btn>
-        <v-btn href="/shop" class="v-btn">
-          <span>Shop</span>
-        </v-btn>
-        <v-btn href="/product" class="v-btn">
-          <span>Product</span>
-        </v-btn>
-        <v-btn href="/blog">
-          <span>Blog</span>
-        </v-btn>
-      </v-bottom-navigation>
       
-    </v-content>
+  
+           <v-btn class="mx-2 white--text" elevation="2"  rounded color="black" to="/">
+            Home
+          </v-btn>
+          <v-btn class="mx-2 white--text" elevation="2"  rounded color="black" to="/signup">
+            Contact
+          </v-btn>
+          <v-btn class="mx-2 white--text" elevation="2"  rounded color="black" to="/signup">
+            Team
+          </v-btn>
+           <v-btn class="mx-2 white--text" elevation="2"  rounded color="black" to="/signup">
+            Service
+          </v-btn>
+     
+         
+    </v-app-bar>
 
     <v-main>
       <router-view> </router-view>
@@ -226,9 +132,9 @@ export default {
 .search {
   font-size: 12px;
 }
-.buttonrouter {
+.buttonnav {
   border-radius: 100px;
-  color: rgb(14, 12, 12);
+  color: rgb(206, 13, 13);
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
@@ -236,11 +142,11 @@ export default {
   font-size: 15px;
   margin: 10px 10px;
   cursor: pointer ;
-  border: 1px solid #e9e6e6fd;
+  border: 1px solid #080808fd;
   
 }
-#navigation{
+/* #navigation{
   top:-70px;
-}
+} */
 
 </style>

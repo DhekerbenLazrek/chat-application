@@ -4,8 +4,9 @@
     <v-carousel
     id="carousel"
     cycle
+    class=".d-flex"
     height="300"
-    width="200"
+    width="300"
     hide-delimiter-background
     show-arrows-on-hover
   >
@@ -60,7 +61,7 @@
       <div
        class="col-md-6 col-sm-6 col-xs-12"
       >
-        <v-card>
+        <v-card class=".d-flex">
 
           <v-img
             :src="require('../assets/img/toppicks.jpg')"
@@ -80,7 +81,7 @@
       <div
         class="col-md-6 col-sm-6 col-xs-12"
       >
-        <v-card>
+        <v-card class=".d-flex">
           <v-img
             :src="require('../assets/img/newone.jpg')"
             class="white--text align-center"
@@ -105,7 +106,7 @@
             v-slot="{ hover }"
             open-delay="200"
                 >
-        <v-card class="pa-1 rounded-circle d-inline-block"  :elevation="hover ? 16 : 2" :class="{ 'on-hover': hover }">
+        <v-card  class="pa-1 rounded-circle d-inline-block"  :elevation="hover ? 16 : 2" :class="{ 'on-hover': hover }">
           <v-img
             :src="require('../assets/img/deal2.jpg')"
             class="white--text align-center"
@@ -113,7 +114,7 @@
             height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size">Salles des fetes </h3>
+            <h4 class="text-center font-size">Salles des fetes </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/Sallesdesfetes" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -138,7 +139,7 @@
             height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size">Orchestres</h3>
+            <h4 class="text-center font-size">Orchestres</h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/Orchestres" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -160,7 +161,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size">Soulamia/Issawia</h3>
+            <h4 class="text-center font-size">Soulamia/Issawia</h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/Soulamia" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -182,7 +183,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Hadhra </h3>
+            <h4 class="text-center font-size"> Hadhra </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -204,7 +205,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Organiste & Disceur(dj) </h3>
+            <h4 class="text-center font-size"> Organiste & Disceur(dj) </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -226,7 +227,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Locations des maisons de marriage </h3>
+            <h4 class="text-center font-size"> Locations des maisons de marriage </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -248,7 +249,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Locations des voitures de marriage </h3>
+            <h4 class="text-center font-size"> Locations des voitures de marriage </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -269,7 +270,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Sallon de coiffure et SPA </h3>
+            <h4 class="text-center font-size"> Sallon de coiffure et SPA </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -290,7 +291,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Traiteur </h3>
+            <h4 class="text-center font-size"> Traiteur </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -311,7 +312,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Photographe pour marriage </h3>
+            <h4 class="text-center font-size"> Photographe pour marriage </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -333,7 +334,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Salés & Sucrés  </h3>
+            <h4 class="text-center font-size"> Salés & Sucrés  </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -354,7 +355,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Décoration du marriage  </h3>
+            <h4 class="text-center font-size"> Décoration du marriage  </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -376,7 +377,7 @@
              height="210px"
             width="220px"
           >
-            <h3 class="text-center font-size"> Fleuriste  </h3>
+            <h4 class="text-center font-size"> Fleuriste  </h4>
             <div class="text-center mt-2">
               <v-btn class="white--text caption"  href="/shop" text>RESERVE NOW<v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
@@ -579,7 +580,7 @@ import Dealsofday from '@/components/dealsofday/Dealsofday.vue';
   border-color: rgba(7, 6, 6, 0.616);
 }
 #carousel {
-  top: -70px;
+  top: -10px;
 }
 
  

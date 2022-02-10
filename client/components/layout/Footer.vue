@@ -3,10 +3,9 @@
     dark
     padless
     class="footer"
-    
   >
     <v-card
-      class="footer"
+      class=".d-flex"
       flat
       tile
       color="black"
