@@ -1,11 +1,25 @@
 <template>
+<v-app> 
+  <createEvent v-if="apear"/>
+  <v-btn
+      v-if="userstatus === 'admin'"
+      class="mx-2"
+      dark
+      large
+      color="cyan"
+   @click="apearcarcreate"
+    > create event
+      <v-icon dark>
+        mdi-pencil
+      </v-icon>
+    </v-btn>
  <div class="pl-10 pr-8 row">
 <div class="col-md-4 col-sm-4 col-xs-10">
   <v-card
     id="cards"
     
   >
-    <v-card-title>
+    <v-card-title >
       <div
       justify="center">
       
@@ -17,9 +31,13 @@
  </div>
       La Marquise
     </v-card-title>
+    <v-divider></v-divider>
     
     <v-card-subtitle>
-      1,000 miles of wonder
+    <strong>Adresse : Route Tunis GP1 ZI Akouda  </strong>
+    </v-card-subtitle>
+    <v-card-subtitle>
+   <strong> Prix : 6.000.100</strong>
     </v-card-subtitle>
       <v-carousel 
         class = "inline-block"
@@ -118,11 +136,15 @@
       </v-icon>
     </v-avatar>
  </div>
-      Le Serail
+      Le Palace
     </v-card-title>
+    <v-divider></v-divider>
 
     <v-card-subtitle>
-      1,000 miles of wonder
+     <strong> Adresse: </strong>
+    </v-card-subtitle>
+    <v-card-subtitle>
+      <strong>Prix:</strong>
     </v-card-subtitle>
     <v-carousel 
         class = "carousel"
@@ -222,9 +244,12 @@
  </div>
       Le Serail
     </v-card-title>
-
+<v-divider></v-divider>
     <v-card-subtitle>
-      1,000 miles of wonder
+    <strong>  Adresse:</strong>
+    </v-card-subtitle>
+    <v-card-subtitle>
+      <strong>Prix :</strong>
     </v-card-subtitle>
     <v-carousel 
         class = "carousel"
@@ -305,6 +330,8 @@
   
   
   </div>
+  
+  </v-app> 
 </template>
 
 
@@ -344,9 +371,20 @@ import axios from "axios";
     methods: {
       revealEv(index){
       this.events[index].reveal = !this.events[index].reveal
+    }
     },
-
+    apearcarcreate(){
+      this.apear = !this.apear;
     },
+      async remove(id){
+            await axios.delete(`http://localhost:5000/api/Sallesfetes/${id}`);
+            window.location.replace("/Salledesfetes");
+        }
+  
+  
+  
+  
+  
   }
 
 
@@ -362,9 +400,12 @@ import axios from "axios";
   
 } 
 #cards {
-  
+  max-width: 300%;
   top:60px;
-  width: 600px;
+  
+}
+.container{
+  width:700px;
 }
 
 

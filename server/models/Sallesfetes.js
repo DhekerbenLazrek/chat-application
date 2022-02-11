@@ -3,7 +3,23 @@ const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const SallesfetesSchema = new Schema({
+    avatar: {
+        type: String,
+        required: true
+    },
     title: {
+        type: String,
+        required: true
+    },
+    adresse: {
+        type: String,
+        required: true
+    },
+    prix: {
+        type: Number,
+        required: true
+    },
+    images: {
         type: String,
         required: true
     },
@@ -11,27 +27,12 @@ const SallesfetesSchema = new Schema({
         type: String,
         required: true
     },
-    images: {
-        type: String,
-        required: false
-    },
    
     youtubeLink: {
         type: String,
         required: true
     },
-    dateevents: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: String,
-        required: true
-    },
-    date: {
-        type: Date,
-        default: Date.now,
-    },
+    
 });
 
 

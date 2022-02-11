@@ -5,14 +5,15 @@ const router = Router();
 
 router.post('/create', async (req,res)=> {
     console.log (req.body)
-    const { title, image, description, youtubeLink,dateevents,price } = req.body;
+    const { avatar,title,adresse,prix,images, description, youtubeLink } = req.body;
         let event = {};
+        event.avatar = req.body.avatar;
         event.title = req.body.title;
-        event.image = req.body.image;
+        event.adresse = req.body.adresse;
+        event.prix = req.body.prix;
+        event.images = req.body.images;
         event.description = req.body.description;
         event.youtubeLink = req.body.youtubeLink;
-        event.dateevents = req.body.dateevents;
-        event.price = req.body.price;
         console.log(events.title)
         let eventModel = new events(event);
         await eventModel.save();
@@ -21,7 +22,7 @@ router.post('/create', async (req,res)=> {
     
  });
 //  ------------------------- get all events-----------------------
- router.get('/allevents', async(req, res) => {
+ router.get('/', async(req, res) => {
     try {
         const event = await events.find();
         if (!event) throw new Error('No events to display Err !');
