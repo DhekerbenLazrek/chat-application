@@ -1,6 +1,14 @@
-// const dotenv = require("dotenv");
-// dotenv.config();
-
+const { PORT } = require("./configg");
+const express = require('express');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const cors = require('cors');
+const helmet = require('helmet');
+const compression = require('compression');
+const dotenv = require("dotenv");
+require('dotenv').config({path:"./.env"});
+dotenv.config();
+const app = express();
 /** Dotenv Environment Variables */
 if (process.env.HEROKU_DEPLOYMENT !== 'true') {
     require('dotenv').config({path:"./.env"});
@@ -10,70 +18,56 @@ if (process.env.HEROKU_DEPLOYMENT !== 'true') {
 const mongoose = require('mongoose');
 require('./db/mongoose');
 
-
 const path = require('path');
 const fs = require('fs');
-
-
 const morgan = require('morgan');
 const winston = require('winston');
 const { logger } = require('./config/logModule');
-
-
 const passport = require('passport');
 require('./config/passport')(passport);
 
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
-const cors = require('cors');
-const helmet = require('helmet');
-const enforce = require('express-sslify');
-const compression = require('compression');
+// const server = require('http').Server(app);
 
 
-const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
-
-
-
-
-
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/user');
-const profileRoutes = require('./routes/profile');
-
-const messageRoutes = require('./routes/messages');
-
-
+// Setting up basic middleware for all Express requests
 app.use(
     morgan('combined', {
         stream: fs.createWriteStream('logs/access.log', { flags: 'a' })
     })
-);
-app.use(morgan('dev'));
+    );
+    app.use(morgan('dev'));
 
-if (process.env.HEROKU_DEPLOYMENT === 'true') {
-    app.enable('trust proxy');
-    app.use(enforce.HTTPS({ trustProtoHeader: true }));
-}
+// if (process.env.HEROKU_DEPLOYMENT === 'true') {
+//     app.enable('trust proxy');
+//     app.use(enforce.HTTPS({ trustProtoHeader: true }));
+// }
 
 app.use(helmet());
 app.use(compression());
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+
+
+app.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
+app.use(bodyParser.json()); // Send JSON responses
+app.use(express.json());
 app.use(passport.initialize());
 app.use(expressValidator());
 app.use(cors());
-app.set('io', io);
 
+// declaring routes
+const SallesRoutes = require('./routes/Salles');
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
+const profileRoutes = require('./routes/profile');
+
+
+// using api's
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/profile', profileRoutes);
-app.use('/api/messages', messageRoutes);
+app.use("/api/Salles", SallesRoutes);
+app.use('/api/profile', profileRoutes);
 
 if (process.env.NODE_ENV !== 'production') {
     logger.add(
@@ -82,9 +76,6 @@ if (process.env.NODE_ENV !== 'production') {
         })
     );
 }
-
-let userTypings = {};
-
 
 
 /** Serve static assets if production */
@@ -95,10 +86,23 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-if (process.env.NODE_ENV !== 'test') {
-    server.listen(process.env.PORT || 5000, () => {
-        logger.info(`[LOG=SERVER] Server started on port 5000`);
-    });
-}
 
-module.exports = { app };
+
+
+//  GET AND POST REQUEST 
+
+app.get('/', function(req, res) {
+    res.send('Heello')
+  })
+app.post('/', function(req, res) {
+    res.send('Heello this is a successful post request')
+})
+
+app.listen(PORT, () => console.log(`LOGGED ON PORT ${PORT}`));
+//   app.use(function(req, res, next) {
+    //     next(createError(404));
+//   });
+
+
+
+ 

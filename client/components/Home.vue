@@ -116,7 +116,7 @@
           >
             <h4 class="text-center font-size">Salles des fetes </h4>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/Sallesdesfetes" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <v-btn class="white--text caption"  href="/salles" text>RESERVE NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
           </v-img>
         </v-card>

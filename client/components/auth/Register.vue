@@ -85,9 +85,7 @@ export default {
             errors: []
         };
     },
-    computed: {
-        ...mapGetters(['getSocket'])
-    },
+    
     methods: {
         ...mapActions(['saveUserData', 'toggleAuthState']),
         handleSubmit() {

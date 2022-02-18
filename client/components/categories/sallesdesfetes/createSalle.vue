@@ -91,7 +91,7 @@
 
     
     <v-btn
-     @click="createEvent"
+     @click="createSalle"
       class="mx-2"
       fab
       dark
@@ -107,7 +107,7 @@
 <script>
 import axios from 'axios'
 export default {
-    name:"createEvent",
+    name:"createSalle",
      data() {
     return {
         avatar:"",
@@ -119,8 +119,8 @@ export default {
         youtubeLink: "",
     }},
     methods:{
-      async createEvent(){
-          const newevent = await axios.post('http://localhost:5000/api/Sallesfetes/create', {
+      async createSalle(){
+          const newsalle = await axios.post('localhost:5000/api/Salles/create', {
               avatar:this.avatar,
               title : this.title,
               adresse: this.adresse,
@@ -129,9 +129,9 @@ export default {
               description: this.description,
               youtubeLink: this.youtubeLink
           });
-          if(newevent){
-              alert('event saved !')
-              window.location.replace('/Sallesdesfetes');
+          if(newsalle){
+              alert('salle saved !')
+              window.location.replace('/salles');
           }
       }
   }

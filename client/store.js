@@ -10,6 +10,7 @@ export default new Vuex.Store({
         authState: false,
         authUser: {},
         currentRoom: null,
+        salle:[],
         rooms: [],
         socket: null
     },
@@ -21,6 +22,9 @@ export default new Vuex.Store({
         getCurrentRoom: state => state.currentRoom
     },
     mutations: {
+        setSalles(state,salle) {
+            state.salle = salle
+        },
         ASSIGN_USER_DATA: (state, payload) => {
             state.authUser = payload;
         },

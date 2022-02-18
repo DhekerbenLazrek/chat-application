@@ -112,13 +112,32 @@ const router = new Router({
                     
                     
                 },
+                {
+                    path: '/reservationform/',
+                    name: 'Reservationform',
+                    component: () => import('@/components/Datepicker/Reservationform.vue'), 
+                    
+                },
+                {
+                    path: '/calendar/',
+                    name: 'Calendar',
+                    component: () => import('@/components/Datepicker/Calendar.vue'), 
+                    
+                },
+
+                 {
+                    path: '/sallesShow/:id',
+                    name: 'sallesShow',
+                    component: () => import('@/components/categories/sallesdesfetes/sallesShow.vue'), 
+                    
+                },
 
             
         //categories
          {
-            path: '/sallesdesfetes',
-            name: 'Sallesdesfetes',
-            component: () => import('@/components/categories/sallesdesfetes/Sallesdesfetes.vue'),
+            path: '/salles',
+            name: 'salles',
+            component: () => import('@/components/categories/sallesdesfetes/salles.vue'),
             props: true,
          },
          {

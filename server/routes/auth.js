@@ -5,7 +5,6 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models/User');
 const gravatar = require('gravatar');
-const socialAuthActions = require('../actions/socialAuthActions');
 require('dotenv').config({path:"./.env"});
 
 
@@ -14,7 +13,7 @@ const {
     checkRegistrationFields,
     checkLoginFields,
     createErrorObject,
-    customSocialAuthenticate
+    
 } = require('../middleware/authenticate');
 
 /**
@@ -117,12 +116,6 @@ router.post('/logout', async (req, res) => {
     res.status(200).send({ success: true });
 });
 
-/** Social Auth Routes */
-router.get('/google', customSocialAuthenticate('google'));
-router.get('/facebook', customSocialAuthenticate('facebook'));
 
-/** Social Auth Callbacks */
-router.get('/google/redirect', passport.authenticate('google'), socialAuthActions.google);
-router.get('/facebook/redirect', passport.authenticate('facebook'), socialAuthActions.facebook);
 
 module.exports = router;

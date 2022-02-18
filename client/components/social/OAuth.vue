@@ -14,9 +14,7 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'OAuth',
     props: ['provider', 'icon', 'classes'],
-    computed: {
-        ...mapGetters(['getSocket'])
-    },
+    
     data: function() {
         return {
             popup: null,
@@ -38,7 +36,6 @@ export default {
                 height = 600;
             const left = window.innerWidth / 2 - width / 2;
             const top = window.innerHeight / 2 - height / 2;
-            const url = `/api/auth/${this.provider}?socketId=${this.getSocket.id}`;
 
             return window.open(
                 url,
@@ -60,27 +57,7 @@ export default {
             }, 1000);
         }
     },
-    created() {
-        this.getSocket.on(this.provider, data => {
-            data = JSON.parse(data);
-            localStorage.setItem('authToken', data.token);
-
-            this.$store.dispatch('toggleAuthState', true);
-            this.$store.dispatch('saveUserData', data.user);
-
-            setAuthToken(data.token);
-
-            this.close();
-            this.disabled = false;
-            this.$router.push({
-                name: 'Login',
-                params: { handle: data.user.handle }
-            });
-        });
-    },
-    beforeDestroy() {
-        this.getSocket.removeListener(this.provider);
-    }
+    
 };
 </script>
 

@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
-const SallesfetesSchema = new Schema({
+const PhotographeSchema = new Schema({
     avatar: {
         type: String,
         required: true
@@ -36,6 +35,6 @@ const SallesfetesSchema = new Schema({
 });
 
 
-const Sallesfetes = mongoose.model('Sallesfetes', SallesfetesSchema);
+const  Photographe = mongoose.model(' Photographe',  PhotographeSchema);
 
-module.exports = { Sallesfetes };
+module.exports = { Photographe };
