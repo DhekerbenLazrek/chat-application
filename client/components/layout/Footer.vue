@@ -15,16 +15,53 @@
       no-gutters
     >
       <v-btn
-        v-for="link in links"
-        href="/EspaceUtilisateur"
-        :key="link"
+        href="/Dashboard"
         color="white"
         text
         class="my-2"
       >
-        {{ link }}
+        Espace utilisateur
       </v-btn>
-      
+       <v-btn
+        href="/About"
+        color="white"
+        text
+        class="my-2"
+      >
+        About Us
+      </v-btn>
+      <v-btn
+        href="/Team"
+        color="white"
+        text
+        class="my-2"
+      >
+        Team
+      </v-btn>
+      <v-btn
+        href="/ Services"
+        color="white"
+        text
+        class="my-2"
+      >
+        Services
+      </v-btn>
+      <v-btn
+        href="/ Blog"
+        color="white"
+        text
+        class="my-2"
+      >
+         Blog
+      </v-btn>
+      <v-btn
+        href="/Contact"
+        color="white"
+        text
+        class="my-2"
+      >
+         Contact Us
+      </v-btn>
       <v-card-text class="white--text pt-0">
         Phasellus feugiat a Maurisultrices sa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
       </v-card-text>
@@ -68,14 +105,7 @@ export default {
         'mdi-linkedin',
         'mdi-instagram',
       ],
-       links: [
-        'Espace Utilisateur',
-        'About Us',
-        'Team',
-        'Services',
-        'Blog',
-        'Contact Us',
-      ],
+       
   }),
     
 };

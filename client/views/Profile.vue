@@ -1,4 +1,4 @@
-<!--<template>
+<template>
     <div class="page profile">
         <div class="section section--mmt">
             <div class="section__heading mt-10">

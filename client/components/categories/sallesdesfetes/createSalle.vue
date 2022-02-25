@@ -27,6 +27,30 @@
     </v-row>
     <v-row>
       <v-col cols="4">
+        <v-subheader> images</v-subheader>
+      </v-col>
+      <v-col cols="8">
+        <v-text-field
+          label="images"
+          v-model="images"
+          type="text"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4">
+        <v-subheader>description</v-subheader>
+      </v-col>
+      <v-col cols="8">
+        <v-text-field
+          label="description"
+          v-model="description"
+          type="text"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4">
         <v-subheader> Adresse</v-subheader>
       </v-col>
       <v-col cols="8">
@@ -40,36 +64,12 @@
 
     <v-row>
       <v-col cols="4">
-        <v-subheader> images</v-subheader>
-      </v-col>
-      <v-col cols="8">
-        <v-text-field
-          label="images"
-          v-model="images"
-          type="text"
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="4">
         <v-subheader>prix</v-subheader>
       </v-col>
       <v-col cols="8">
         <v-text-field
           label="prix"
           v-model="prix"
-          type="text"
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="4">
-        <v-subheader>description</v-subheader>
-      </v-col>
-      <v-col cols="8">
-        <v-text-field
-          label="description"
-          v-model="description"
           type="text"
         ></v-text-field>
       </v-col>
@@ -112,10 +112,10 @@ export default {
     return {
         avatar:"",
         title:"",
-        adresse: "",
-        prix:"",
         images:"",
         description:"",
+        adresse: "",
+        prix:"",
         youtubeLink: "",
     }},
     methods:{
@@ -123,10 +123,10 @@ export default {
           const newsalle = await axios.post('localhost:5000/api/Salles/create', {
               avatar:this.avatar,
               title : this.title,
-              adresse: this.adresse,
-              prix: this.prix,
               images: this.images,
               description: this.description,
+              adresse: this.adresse,
+              prix: this.prix,
               youtubeLink: this.youtubeLink
           });
           if(newsalle){

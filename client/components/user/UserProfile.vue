@@ -126,8 +126,6 @@ export default {
     }
 };
 </script>
-
-
 <style lang="scss">
 @import '@/assets/scss/views/profile.scss';
 @import '@/assets/scss/components/infobox.scss';

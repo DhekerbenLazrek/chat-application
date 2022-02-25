@@ -2,6 +2,7 @@ const _ = require('lodash');
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models/User');
 const gravatar = require('gravatar');

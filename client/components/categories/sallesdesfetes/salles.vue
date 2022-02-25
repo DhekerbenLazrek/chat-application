@@ -22,21 +22,15 @@
           dense
           solo
         ></v-select>
-  <createSalle v-if="apear"/>
-  <v-btn
-      v-if="userstatus === 'admin'"
-      class="mx-2"
-      dark
-      large
-      color="cyan"
-   @click="apearsallecreate"
-    > create salle
-      <v-icon dark>
-        mdi-pencil
-      </v-icon>
-    </v-btn>
+   <v-btn text to="/admin/videos" v-if="currentUser.admin">Admin</v-btn>
+      <v-spacer></v-spacer>
+      <div v-if="currentUser.name">
+        {{ currentUser.name }}
+      </div> 
+       
+  
     <!-- CARDS -->
-    <v-row class="pl-10 pr-8 row">
+    <v-row >
  <v-col cols="3" v-for="(salle, index) in salles" :key="salle._id"
     sm="5"
     md="4"
@@ -50,6 +44,9 @@
   <v-card id="cards" class="mx-auto"
       color="grey lighten-4"
        :elevation="hover ? 16 : 2"
+       sm="5"
+      md="4"
+      lg="5"
   >
   <div >
     <v-avatar>
@@ -69,10 +66,13 @@
         class = "inline-block"
         id="photocarousel"
         height="200"
-        width="400"
+        width="600"
         cycle
         hide-delimiter-background
         show-arrows-on-hover
+        sm="5"
+        md="4"
+        lg="5"
         >
         <v-carousel-item
         @click="myMethod"  
@@ -81,9 +81,9 @@
             >
         </v-carousel-item>
           </v-carousel>
-  <v-btn class="mx-4" small color="transparent" @click="watchVideo(index)" > Video </v-btn>
-  <v-btn class="mx-4" small color="transparent" @click="revealEv(index)"> Discription </v-btn> 
-  <v-btn class="mx-3" small color="transparent" @click="showsalle(event._id)" > Reservation </v-btn>
+  <v-btn  small block color="transparent" @click="watchVideo(index)" > Video </v-btn>
+  <v-btn  small block color="transparent" @click="revealEv(index)"> Discription </v-btn> 
+  <v-btn  small block color="transparent" @click="showsalle(event._id)" > Reservation </v-btn>
     <router-link to="/Reservationform"> </router-link> 
   
   <v-btn v-if="userstatus === 'admin'" 
@@ -148,10 +148,10 @@
 
 
 <script> 
+import { mapState } from 'vuex';
 import axios from 'axios'
 import createSalle from './createSalle';
 const Cookie =require('js-cookie');
-
   export default {
    name: "salles",
   props: {},
@@ -168,8 +168,6 @@ const Cookie =require('js-cookie');
         components: {
           createSalle,
         },
-
-
     async mounted() {
     const response = await axios.get("http://localhost:5000/api/Salles"); 
     for(var i = 0; i < response.data.length; i++) {
@@ -178,7 +176,6 @@ const Cookie =require('js-cookie');
     }
     this.salles = response.data;
   },
-
     methods: {
       revealEv(index){
       this.salles[index].reveal = !this.salles[index].reveal
@@ -202,11 +199,19 @@ const Cookie =require('js-cookie');
             window.location.replace("/salles");
         }
   },
+      created(){
+    this.$store.dispatch('videos/loadAll');
+     this.$store.dispatch('users/loadCurrent');
+     this.$store.dispatch('tags/loadAll');
+   },
+    computed: {
+     ...mapState({
+       currentUser: state => state.users.currentUser, 
+       snackbars: state => state.snackbar.snackbars
+   })
+   },
   
   }
-
-
-
 </script>
 
 <style> 
@@ -224,9 +229,8 @@ const Cookie =require('js-cookie');
   
 }
 .container{
-  width:700px;
+  width:950px;
 }
-
 .title{
  left:-100px;
 }

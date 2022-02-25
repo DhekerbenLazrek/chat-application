@@ -25,6 +25,7 @@
         "express-validator": "^5.3.0",
         "gravatar": "^1.8.0",
         "helmet": "^3.15.0",
+        "js-cookie": "^3.0.1",
         "jsonwebtoken": "^8.3.0",
         "mongoose": "^5.11.15",
         "passport": "^0.4.0",

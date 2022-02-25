@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import axios from 'axios';
 import router from './router';
 
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -14,6 +15,9 @@ export default new Vuex.Store({
         rooms: [],
         socket: null
     },
+    
+    
+    
     getters: {
         getUserData: state => state.authUser,
         getRoomData: state => state.rooms,

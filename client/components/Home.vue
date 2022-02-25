@@ -6,7 +6,7 @@
     cycle
     class=".d-flex"
     height="300"
-    width="300"
+    width="400"
     hide-delimiter-background
     show-arrows-on-hover
   >

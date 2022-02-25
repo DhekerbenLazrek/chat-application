@@ -9,13 +9,17 @@ import setAuthToken from './utils/authToken';
 import moment from 'moment';
 
 // import '@/styles/style.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCheck)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = ['ion-icons', /^ion-/];
 Vue.prototype.moment = moment;
-
-
 
 
 

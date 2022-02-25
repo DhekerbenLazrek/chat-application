@@ -3,6 +3,16 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import { checkUserData } from './helpers/user';
 import store from './store';
+
+import VideoWatch from "./views/VideoWatch.vue";
+import AdminVideoCreate from "./views/AdminVideoCreate.vue";
+import TagVideoList from "./views/TagVideoList.vue";
+import AdminVideoList from "./views/AdminVideoList.vue";
+import AdminVideoEdit from "./views/AdminVideoEdit.vue";
+import AdminUserList from "./views/AdminUserList.vue";
+import Admin from "./views/Admin.vue";
+import AdminVideoShow from "./views/AdminVideoShow.vue";
+import AdminTagList from "./views/AdminTagList.vue";
 // import 'vuetify/dist/vuetify.min.css'
 
 
@@ -39,12 +49,7 @@ const router = new Router({
                 component: () => import('@/components/slide/Slide.vue'),
                 
             },
-            {
-                path: '/mavi',
-                name: 'Mavi',
-                component: () => import('@/components/layout/Mavi.vue'),
-                
-            },
+           
             {
                 path: '/dealsofday',
                 name: 'Dealsofday',
@@ -79,22 +84,31 @@ const router = new Router({
                 requiresAuth: true
             }
         },
-            {
-            path: '/dashboardutilisateur',
-            name: 'Dashboardutilisateur',
-            component: () => import('@/components/dashboardutilisateur/Dashboardutilisateur.vue'), 
+         {
+            path: '/dashboard',
+            name: 'dashboard',
+            component: () => import('@/views/Dashboard'),
             props: true,
             meta: {
                 requiresAuth: true
             }
-            },
-            {
-                path: '/dach',
-                name: 'Dach',
-                component: () => import('@/components/dashboardutilisateur/Dach.vue'), 
-                props: true,
+        },
+            // {
+            // path: '/dashboardutilisateur',
+            // name: 'Dashboardutilisateur',
+            // component: () => import('@/components/dashboardutilisateur/Dashboardutilisateur.vue'), 
+            // props: true,
+            // meta: {
+            //     requiresAuth: true
+            // }
+            // },
+            // {
+            //     path: '/dach',
+            //     name: 'Dach',
+            //     component: () => import('@/components/dashboardutilisateur/Dach.vue'), 
+            //     props: true,
                
-                },
+            //     },
             {
                 path: '/reservationsutil',
                 name: 'Reservationsutil',
@@ -124,13 +138,67 @@ const router = new Router({
                     component: () => import('@/components/Datepicker/Calendar.vue'), 
                     
                 },
+                {
+                    path: "/video/:id",
+                    name: "video-watch",
+                    component: VideoWatch,
+                    params: true
+                  },
+                  {
+                    path: "/tag/:id",
+                    name: "tag",
+                    component: TagVideoList,
+                    params: true
+                  },
 
-                 {
-                    path: '/sallesShow/:id',
-                    name: 'sallesShow',
-                    component: () => import('@/components/categories/sallesdesfetes/sallesShow.vue'), 
-                    
-                },
+                //  Admin
+                {
+                    path: "/admin",
+                    name: "admin",
+                    component: Admin,
+                    beforeEnter(to, from, next) {
+                      let currentUser = JSON.parse(window.localStorage.currentUser);
+                      if(currentUser && currentUser.admin) {
+                        next();
+                      } else {
+                        next("/");
+                      }
+                    },
+                    children: [
+                      {
+                        path: "videos",
+                        name: "admin-video-list",
+                        component: AdminVideoList,
+                      },
+                      {
+                        path: "users",
+                        name: "admin-user-list",
+                        component: AdminUserList
+                      },
+                      {
+                        path: "videos/:id/edit",
+                        name: "admin-video-edit",
+                        component: AdminVideoEdit,
+                        params: true,
+                      },
+                      {
+                        path: "video/new",
+                        name: "admin-video-create",
+                        component: AdminVideoCreate
+                      },
+                      {
+                        path: "videos/:id/show",
+                        name: "admin-video-show",
+                        component: AdminVideoShow,
+                        params: true,
+                      },
+                      {
+                        path: "tags",
+                        name: "admin-tag-list",
+                        component: AdminTagList,
+                      }
+                    ]
+                  },
 
             
         //categories
@@ -140,6 +208,12 @@ const router = new Router({
             component: () => import('@/components/categories/sallesdesfetes/salles.vue'),
             props: true,
          },
+         {
+            path: '/sallesShow/:id',
+            name: 'sallesShow',
+            component: () => import('@/components/categories/sallesdesfetes/sallesShow.vue'), 
+            
+        },
          {
             path: '/coiffurespa',
             name: 'Coiffurespa',
@@ -215,7 +289,7 @@ const router = new Router({
         {
             path: '/profile/:handle',
             name: 'Profile',
-            component: () => import('@/components/profile/Profile.vue'),
+            component: () => import('@/views/Profile.vue'), 
             meta: {
                 requiresAuth: true,
                

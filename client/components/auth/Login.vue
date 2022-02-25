@@ -33,8 +33,8 @@
                             name="password"
                             class="form__control"
                             placeholder="Enter Password"
-                            pattern=".{5,15}"
-                            title="Password must be between 5 and 15 characters"
+                            pattern=".{5,20}"
+                            title="Password must be between 5 and 20 characters"
                             required
                             v-model.trim="password"
                         />
@@ -105,7 +105,7 @@ export default {
                             setAuthToken(res.data.token);
 
                             this.$router.push({
-                                name: 'Dashboardutilisateur',
+                                name: 'Dashboard',
                                 params: { handle: res.data.user.handle }
                             });
                         }

@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <v-app id="inspire">
     <v-navigation-drawer
       v-model="drawer"
@@ -20,7 +20,7 @@
       <v-divider></v-divider>
 
       <div>
-            <!-- <Particle name="particlejs-nav" /> -->
+            <!-- <Particle name="particlejs-nav" /> 
 
             <div v-if="isAuthorized">
              <v-icon>mdi-view-dashboard</v-icon>
@@ -29,16 +29,11 @@
                         v-if="Object.keys(user).length > 0"
                         :to="{ name: 'UserProfile', params: { handle: user.handle } }"
                         class="buttonrouter"
-                        >{{ user.handle }}</router-link
-                    >
+                        >{{ user.handle }}
+                    </router-link>
                      
                 </button>
-                <div>
-        <v-icon>mdi-view-dashboard</v-icon>
-        <button class="buttonrouter">
-            <router-link to="/Reservationutil">Mes Reservations</router-link>
-        </button>
-       </div>
+          
                 <div>
                     <button
                         @click.prevent="logout"
@@ -103,7 +98,7 @@ import { mapActions, mapGetters } from 'vuex';
 import Particle from '@/components/layout/Particle.vue';
 import SignedInLinks from '@/components/layout/SignedInLinks.vue';
  export default {
-    name: "navbar",
+    name: "Dashboardutilisateur",
     props: ['logout', 'user'],
     components: {
         Particle: Particle,
@@ -111,14 +106,14 @@ import SignedInLinks from '@/components/layout/SignedInLinks.vue';
     },
     data: function() {
         return {
-           open: false ,
+          
           loading: false,
-        items: [],
-        select: null,
-        states: [],
+          items: [],
+          select: null,
+          states: [],
           drawer: null,
           cards: ['Today', 'Yesterday'],
-             value: 1 
+            
         };
     },
     computed: {

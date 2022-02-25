@@ -60,7 +60,7 @@ import SignedInLinks from '@/components/layout/SignedInLinks.vue';
 
 export default {
     name: "navbar",
-    props: ['logout', 'user'],
+    props: ['user'],
     components: {
         Particle: Particle,
         SignedInLinks
@@ -95,13 +95,7 @@ export default {
         closeSideNav() {
             this.navToggleState = false;
         },
-        logout() {
-            if (localStorage.getItem('authToken')) {
-                localStorage.clear();
-                this.$store.dispatch('toggleAuthState', false);
-                this.$router.push({ name: 'Login' });
-            }
-        },
+       
         closeSideNav() {
         this.$refs.Close.click();
       },

@@ -18,12 +18,12 @@ const checkRegistrationFields = async (req, res, next) => {
     req.check('email').isEmail();
     req.check('username')
         .isString()
-        .isLength({ min: 5, max: 15 })
-        .withMessage('Username must be between 5 and 15 characters');
+        .isLength({ min: 5, max: 20 })
+        .withMessage('Username must be between 5 and 20 characters');
     req.check('password')
         .isString()
-        .isLength({ min: 5, max: 15 })
-        .withMessage('Password must be between 5 and 15 characters');
+        .isLength({ min: 5, max: 20 })
+        .withMessage('Password must be between 5 and 20 characters');
 
     let errors = req.validationErrors() || [];
 
@@ -102,8 +102,8 @@ const checkCreateRoomFields = async (req, res, next) => {
         req.check('password')
             .not()
             .isEmpty()
-            .isLength({ min: 5, max: 15 })
-            .withMessage('Password should be between 5 and 15 characters');
+            .isLength({ min: 5, max: 20 })
+            .withMessage('Password should be between 5 and 20 characters');
     }
 
     const errors = req.validationErrors();
