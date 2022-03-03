@@ -51,6 +51,7 @@ router.post('/register', [checkRegistrationFields], (req, res) => {
                 username: req.body.username,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password,10),
+                status: req.body.status,
                 image: avatar
             });
 

@@ -10,7 +10,7 @@
           <v-list-item-title>
              <div>
               <button>
-                     <router-link to="/Reservationutil" class ="black--text">Mes Reservations</router-link>
+                     <router-link to="/Dashboard" class ="black--text">Dashboard</router-link>
                 </button>
                     </div> 
           </v-list-item-title>

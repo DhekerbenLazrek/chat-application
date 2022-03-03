@@ -67,6 +67,7 @@ export default {
     components: {
         Error,
         OAuth
+        
     },
     data: function() {
         return {
@@ -105,7 +106,7 @@ export default {
                             setAuthToken(res.data.token);
 
                             this.$router.push({
-                                name: 'Dashboard',
+                                name: 'Stepper',
                                 params: { handle: res.data.user.handle }
                             });
                         }

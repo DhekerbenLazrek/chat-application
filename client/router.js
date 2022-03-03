@@ -32,9 +32,9 @@ const router = new Router({
         },
        
         {
-            path: '/',
-            name: 'Navbar',
-            component: () => import('@/components/layout/Navbar.vue'),
+            path: '/steps',
+            name: 'Stepper',
+            component: () => import('@/components/layout/Stepper.vue'),
             
         },
         {
@@ -85,7 +85,7 @@ const router = new Router({
             }
         },
          {
-            path: '/dashboard',
+            path: '/dashboard/',
             name: 'dashboard',
             component: () => import('@/views/Dashboard'),
             props: true,
@@ -209,7 +209,7 @@ const router = new Router({
             props: true,
          },
          {
-            path: '/sallesShow/:id',
+            path: '/sallesShow/:idsalles',
             name: 'sallesShow',
             component: () => import('@/components/categories/sallesdesfetes/sallesShow.vue'), 
             
@@ -305,6 +305,30 @@ const router = new Router({
                 
             }
         },
+        {
+            path: '/payment',
+            component: ()=>import('./components/payment/payment.vue')
+        },
+        {
+            path: '/createSalle',
+            name: 'createsalle',
+            component: () => import('@/components/categories/sallesdesfetes/createSalle.vue'), 
+            
+        },
+        // {
+        //     path: '/cardform/',
+        //     name: 'cardform',
+        //     component: () => import('@/components/paymentcard/CardForm'),
+            
+        // },
+        // {
+        //     path: '/main/',
+        //     name: 'main',
+        //     component: () => import('@/components/paymentcard/main'),
+            
+        // },
+        
+
         {
             path: '/user/:handle/edit',
             name: 'EditUserProfile',

@@ -62,6 +62,32 @@ const checkLoginFields = async (req, res, next) => {
     }
 };
 
+// -------------------check steps field-----------------------
+const checkStepsFields = async (req, res, next) => {
+    let errors = [];
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+        errors.push({ param: 'email', msg: 'Invalid Details Entered' });
+    } else {
+        if (req.body.password !== null && !(await user.isValidPassword(req.body.password))) {
+            errors.push({ param: 'password', msg: 'Invalid Details Entered' });
+        }
+    }
+
+    if (errors.length !== 0) {
+        res.send({
+            errors: createErrorObject(errors)
+        });
+    } else {
+        next();
+    }
+};
+
+
+
+
+// --------------------------check edit profile field---------------------------
+
 const checkEditProfileFields = async (req, res, next) => {
     let errors = [];
 
@@ -123,6 +149,7 @@ module.exports = {
     checkLoginFields,
     checkRegistrationFields,
     checkEditProfileFields,
+    checkStepsFields,
     checkCreateRoomFields,
     createErrorObject
 };

@@ -1,23 +1,21 @@
 <template>
     <div class="page profile">
-        <section class="section section--profile mt-6 profile__content">
+         <section class="section section--profile mt-6 profile__content">
             <div class="section__heading mt-6 mb-3">
-                <span class="section__title">Welcome into your space</span>
-            </div>
-            <div class="section__content">
                 <router-link
-                    :to="{name: 'Dashboardutilisateur'}"
-                    class="btn btn--success mt-3 center"
-                >Start !</router-link>
+                    :to="{name: 'Dashboard'}"
+                    class="btn btn--info mt-3 center"
+                >Start </router-link>
+            </div> 
             <div class="section__content">
-    
+                
                 <div class="infobox__container" v-if="user">
                     <span class="lead">Your current profile</span>
-                    <div class="infobox__item" v-if="user.social.id === null">
+                    <div class="infobox__item" v-if="user.id === null">
                         <img :src="user.image" alt class="profile__image">
                     </div>
                     <div class="infobox__item" v-else>
-                        <img :src="user.social.image" alt class="profile__image">
+                        <img :src="user.image" alt class="profile__image">
                     </div>
                     <div class="infobox__item">
                         <span class="infobox__item--left">Display Handle</span>
@@ -27,9 +25,9 @@
                         <span class="infobox__item--left">Email</span>
                         <span
                             class="infobox__item--right"
-                            v-if="user.social.email === null"
+                            v-if="user.email === null"
                         >{{ user.email }}</span>
-                        <span class="infobox__item--right" v-else>{{ user.social.email }}</span>
+                        <span class="infobox__item--right" v-else>{{ user.email }}</span>
                     </div>
                     <div class="infobox__item">
                         <span class="infobox__item--left">Username</span>
@@ -42,42 +40,39 @@
                     <div class="infobox__actions mt-3" v-if="user">
                         <router-link
                             :to="{name: 'EditUserProfile', params: { handle: user.handle }}"
-                            class="btn btn-outline-danger"
+                            class="btn btn--info white--text"
                         >Edit Profile</router-link>
+    
                         <a
                             href="#"
                             @click.prevent="handleDeleteModal"
-                           class="btn btn-outline-danger"
+                            class="btn btn--danger white--text"
+                           
                         >Delete Account</a>
                     </div>
                 </div>
                 <Modal name="deleteUser" ref="deleteUser">
                     <template slot="header">
-                        <h2 class="text-upper">Delete Account</h2>
+                        <h2 class="wbtn btn--clear btn--danger">Delete Account</h2>
                     </template>
                     <template slot="body">
-                        <p class="lead">Warning: This action cannot be undone</p>
+                        <p class="lead mt-15">Warning: This action cannot be undone</p>
                         <p
-                            class="lead mt-6"
+                            class="lead mt-15"
                         >Are you sure you want to permanently delete your account?</p>
-                        <div class="actions mt-6">
+                        <div class="actions mt-10">
                             <a
-                                href="/"
+                                href="#"
+                                color="black"
                                 @click.prevent="handleDelete"
-                                class="btn btn-outline-danger"
+                                class="btn btn--clear btn--danger"
+                                
                             >Yes, Delete Account</a>
                         </div>
-                        
-                        
                     </template>
                 </Modal>
             </div>
-            </div>
-        </section>
-        <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center" >
-                
-            
-              </div>
+         </section> 
     </div>
 </template>
 
@@ -126,11 +121,9 @@ export default {
     }
 };
 </script>
+
+
 <style lang="scss">
 @import '@/assets/scss/views/profile.scss';
 @import '@/assets/scss/components/infobox.scss';
-
-.section__title {
-    color:black;
-}
 </style>

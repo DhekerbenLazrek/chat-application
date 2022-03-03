@@ -12,25 +12,21 @@
 </template>
 
 <script>
-import Sidebar from "./components/Sidebar";
-import Topbar from "./components/Topbar";
-// import _ from 'lodash';
-// import Navbar from '@/components/layout/Navbar.vue'
+import Sidebar from "@/components/layout/Sidebar";
+import Topbar from "@/components/layout/Topbar";
 import Footer from '@/components/layout/Footer.vue'
-
-
 import Particle from '@/components/layout/Particle.vue';
+// import _ from 'lodash';
 
 
 
 export default {
     name: 'App',
     components: {
-        // Navbar,
         Topbar,
         Sidebar,
         Footer,
-         Particle,
+        Particle,
         
     },
     data: () => ({

@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer v-model="drawer" app>
     <v-img
-        :src="require('../assets/img/oriz.png')"
+        :src="require('../../assets/img/oriz.png')"
       height="120"
       class="pa-4"
       
@@ -17,7 +17,49 @@
       </div> -->
     </v-img>
     <v-divider></v-divider>
+    <!-- Contact -->
     <v-list>
+      <v-list-item link>
+        <v-list-item-icon>
+          <v-icon>mdi-microsoft-windows</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>
+            <router-link to="/Contact" class ="black--text" >Contact</router-link>
+            </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+    <!-- Team -->
+    <v-list>
+      <v-list-item link>
+        <v-list-item-icon>
+          <v-icon>mdi-microsoft-windows</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>
+            <router-link to="/Team" class ="black--text" >Team</router-link>
+            </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+     <v-list>
+      <v-list-item link>
+        <v-list-item-icon>
+          <v-icon>mdi-microsoft-windows</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>
+            <router-link to="/Service" class ="black--text" >Service</router-link>
+            </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+    <!-- Dashboard -->
+    <!-- <v-list>
       <v-list-item link>
         <v-list-item-icon>
           <v-icon>mdi-microsoft-windows</v-icon>
@@ -29,17 +71,18 @@
             </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-    </v-list>
+    </v-list> -->
 
     <v-list>
       <v-list-item link>
-        <v-list-item-icon>
-          <v-icon>mdi-account</v-icon>
-        </v-list-item-icon>
+       
 
         <v-list-item-content>
           <v-list-item-title>
              <div v-if="isAuthorized">
+                     <v-list-item-icon>
+                <v-icon>mdi-account</v-icon>
+                    </v-list-item-icon>
               <button @click="this.closeSideNav">
                     <router-link
                         v-if="Object.keys(user).length > 0"
@@ -73,7 +116,7 @@ import Particle from '@/components/layout/Particle.vue';
 import SignedInLinks from '@/components/layout/SignedInLinks.vue';
 export default {
   name: "Sidebar",
-  props: [ "drawer"],
+  props: ["drawer"],
 
   components: {
         Particle: Particle,

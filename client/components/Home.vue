@@ -98,7 +98,7 @@
       </div>
     </div>
 <!-- les cotées -->
-    <div class="pl-10 pr-8 row">
+    <div class="pl-13 pr-4 row">
       <div
        class="col-md-3 col-sm-3 col-xs-12"
       >
@@ -192,12 +192,12 @@
         </v-hover>
         </div>
 
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div  class="col-md-3 col-sm-3 col-xs-12">
       <v-hover
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <v-card  id= "cardone" class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/beauty.jpg')"
             class="white--text align-center"
@@ -219,7 +219,7 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <v-card id= "cardone" class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/restaurant.jpg')"
             class="white--text align-center"
@@ -241,7 +241,7 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <v-card id= "cardone" class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/restaurant.jpg')"
             class="white--text align-center"
@@ -262,7 +262,7 @@
             v-slot:default="{ hover }"
             open-delay="200"
                 >
-        <v-card  class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
+        <v-card  id= "cardone" class="pa-1 rounded-circle d-inline-block" :elevation="hover ? 16 : 2">
           <v-img
             :src="require('../assets/img/restaurant.jpg')"
             class="white--text align-center"
@@ -583,6 +583,7 @@ import Dealsofday from '@/components/dealsofday/Dealsofday.vue';
   top: -10px;
 }
 
- 
-
+#cardone{
+  top: -50px;
+}
 </style>

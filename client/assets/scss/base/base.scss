@@ -1,8 +1,8 @@
 @import '../abstract/keyframes.scss';
 @import '../abstract/variables.scss';
 @import '../abstract/util.scss';
-@import '../abstract/animations.scss';
-@import '../vendors/animate.scss';
+// @import '../abstract/animations.scss';
+// @import '../vendors/animate.scss';
 
 @import '../components/social.scss';
 
@@ -31,9 +31,6 @@ header {
    
 }
 
-img {
-    width: 100%;
-}
 
 nav a {
     text-decoration: none;
@@ -189,7 +186,6 @@ li .nav__link.router-link-exact-active {
     width: 100%;
     background: transparent;
     color: #fff;
-    background: url(./assets/img/BackgroundPath.svg) no-repeat;
     background-size: 100%;
     background-position: bottom center;
     background-attachment: fixed;

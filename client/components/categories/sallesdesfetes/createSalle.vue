@@ -1,6 +1,7 @@
 <template>
-<v-container fluid >
-
+<v-container fluid class="container" >
+<div> 
+<h3> Create </h3> 
         <v-row>
       <v-col cols="4">
         <v-subheader>Avatar</v-subheader>
@@ -101,6 +102,7 @@
         mdi-plus
       </v-icon>
     </v-btn>
+    </div>
   </v-container>
 </template>
 
@@ -139,4 +141,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  
+ width:500px;
+ height:700px;
+ border-color: black;
+}
 </style>

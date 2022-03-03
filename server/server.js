@@ -56,18 +56,19 @@ app.use(expressValidator());
 app.use(cors());
 
 // declaring routes
-const SallesRoutes = require('./routes/Salles');
+const SalleRoutes = require('./routes/Salles');
 const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/user');
+const UserRoutes = require('./routes/User');
 const profileRoutes = require('./routes/profile');
-
+const PaySalleRoutes = require("./routes/PaySalle");
 
 // using api's
 app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
+app.use('/api/User', UserRoutes);
 app.use('/api/profile', profileRoutes);
-app.use("/api/Salles", SallesRoutes);
+app.use("/api/Salles", SalleRoutes);
 app.use('/api/profile', profileRoutes);
+app.use("/api/PaySalle", PaySalleRoutes);
 
 if (process.env.NODE_ENV !== 'production') {
     logger.add(

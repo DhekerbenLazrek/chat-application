@@ -1,6 +1,14 @@
 <template>
-<v-container class="form">
+<div> 
+<h3> Completer la reservation </h3>
+<v-divider> </v-divider> 
+<br>
+<!-- <v-card
+    class="card"
+    > -->
   <v-form 
+    
+    class="form"
     ref="form"
     v-model="valid"
     lazy-validation
@@ -12,24 +20,9 @@
           dense
          solo
         ></v-select>
-    <v-text-field
-    solo
-      v-model="name"
-      :counter="10"
-      :rules="nameRules"
-      label="Name"
-      required
-    ></v-text-field>
+    
 
-    <v-text-field
-    solo
-      v-model="email"
-      :rules="emailRules"
-      label="E-mail"
-      required
-    ></v-text-field>
-
-     <v-dialog
+      <v-dialog
             ref="dialog"
             v-model="modal"
             :return-value.sync="date"
@@ -41,7 +34,7 @@
               solo
                 v-model="dateRangeText"
                 hint="Check-in and Check-out dates"
-                label="Reservation Dates"
+                label="Reservation Date"
                 
                 readonly
                 v-bind="attrs"
@@ -49,6 +42,7 @@
               ></v-text-field>
             </template>
             <v-date-picker
+             v-if="modal"
               v-model="dates"
               range
               scrollable
@@ -61,11 +55,10 @@
               <v-btn text color="primary" @click="$refs.dialog.save(date)">
                 OK
               </v-btn>
-
-          
             </v-date-picker>
           </v-dialog>
 
+          
            <v-dialog
         ref="dialog"
         v-model="modal2"
@@ -106,19 +99,56 @@
           </v-btn>
         </v-time-picker>
       </v-dialog>
-    
-     <v-autocomplete
+
+      <v-autocomplete
             solo
-            ref="country"
-            v-model="country"
-            :rules="[() => !!country || 'This field is required']"
-            :items="countries"
-            label="Country"
-            placeholder="Select country..."
+            ref="nombrepersonnes"
+            v-model="nombrepersonnes"
+            :rules="[() => !!nombrepersonnes || 'This field is required']"
+            :items="nombrepersonnes"
+            label="Nombre de personnes"
+            placeholder="Nombre de personnes"
             required
           ></v-autocomplete>
 
+      <v-text-field
+      solo
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="Name"
+      required
+    ></v-text-field>
 
+    <v-text-field
+    solo
+      v-model="email"
+      :rules="emailRules"
+      label="E-mail"
+      required
+    ></v-text-field>
+
+      <v-text-field
+        solo
+          v-model="numbers"
+          :counter="8"
+          :error-messages="errors"
+          label="Phone Number"
+          required
+        >
+        </v-text-field>
+    
+        
+     <v-autocomplete
+            solo
+            ref="ville"
+            v-model="ville"
+            :rules="[() => !!ville || 'This field is required']"
+            :items="villes"
+            label="Villes"
+            placeholder="Select villes..."
+            required
+          ></v-autocomplete>
 
 <br>
     <v-checkbox
@@ -146,19 +176,29 @@
     </v-btn>
 
   </v-form>
-     </v-container>
+     <!-- </v-card> -->
+  </div>
 </template>
 
 <script>
+import createSalle from "./createSalle.vue";
+import axios from "axios";
+const Cookie = require("js-cookie");
   export default {
+    name:"Reservationform",
     data() {
       return {
+         items: ['Marriage', 'Hadhra', 'Fiancailles', 'Conferences','Siminaire'],
         dates: [],
         modal: false,
         date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
         .toISOString()
         .substr(0, 10),
+        time: [],
+        modal2: false,
       valid: true,
+      select: null,
+      nombrepersonnes: ['50-100', '100-150', '150-200', '200-250', '250-300', '300-350', ' 350-400', '400-450', '450-500', '500-550', '550-600', ' 600-650', '650-700', '700-750',],
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
@@ -170,15 +210,19 @@
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       ],
       select: null,
-      countries: ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Anguilla', 'Antigua &amp; Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia &amp; Herzegovina', 'Botswana', 'Brazil', 'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Cape Verde', 'Cayman Islands', 'Chad', 'Chile', 'China', 'Colombia', 'Congo', 'Cook Islands', 'Costa Rica', 'Cote D Ivoire', 'Croatia', 'Cruise Ship', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Estonia', 'Ethiopia', 'Falkland Islands', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Polynesia', 'French West Indies', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece', 'Greenland', 'Grenada', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jersey', 'Jordan', 'Kazakhstan', 'Kenya', 'Kuwait', 'Kyrgyz Republic', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Mauritania', 'Mauritius', 'Mexico', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Namibia', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Norway', 'Oman', 'Pakistan', 'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Reunion', 'Romania', 'Russia', 'Rwanda', 'Saint Pierre &amp; Miquelon', 'Samoa', 'San Marino', 'Satellite', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain', 'Sri Lanka', 'St Kitts &amp; Nevis', 'St Lucia', 'St Vincent', 'St. Lucia', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', `Timor L'Este`, 'Togo', 'Tonga', 'Trinidad &amp; Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks &amp; Caicos', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Venezuela', 'Vietnam', 'Virgin Islands (US)', 'Yemen', 'Zambia', 'Zimbabwe'],
+      villes: ['Tunis', 'Sousse', 'Monastir', 'Sfax', 'Mahdia', 'Ariana', ' Hamamet', 'Nabel', 'Gafsa', 'Gabes', 'Tataounie', 'Ben Arous', 'Kairouan', 'Beja', 'Tozeur', 'Jandouba','Lkef','Mednin','Zaghouane',],
+      numbers:[],
+      checkbox: false,
       checkbox: false,
      
-        time: null,
-        modal2: false,
-         items: ['Marriage', 'Hadhra', 'Fiancailles', 'Conferences'],
+        
+        
       }
       
     },
+    components: {
+    createSalle,
+  },
     
 computed: {
     dateRangeText() {
@@ -203,9 +247,19 @@ computed: {
 </script>
 
 <style> 
-.form {
- width:500px;
- height:500px;
+.container {
+  
+ width:300px;
+ height:700px;
  border-color: black;
 }
+.form{
+    top:50px;
+    width:500px;
+    height:700px;
+    border-color: black;
+}
+/* .card {
+   width:500px;
+} */
 </style>

@@ -7,12 +7,22 @@
             <div class="section__content">
                 <form @submit.prevent="handleSubmit" class="form">
                     <p class="lead">Edit Profile Details</p>
-                    <div class="profile__item" v-if="user.social.id === null">
+                    <div class="profile__item" v-if="user.id === null">
                         <img :src="user.image" alt class="profile__image" />
+                        <v-spacer />
+                        <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length"
+                    accept="image/*" class="input-file">      
+                    <p v-if="isInitial">
+                Drag your file(s) here to begin<br> or click to browse
+                    </p>
+                    <p v-if="isSaving">
+                Uploading {{ fileCount }} files...
+                    </p>
+
                     </div>
                     <div class="profile__item" v-else>
-                        <img :src="user.social.image" alt class="profile__image" />
-                       <img src="https://randomuser.me/api/portraits/women/85.jpg">
+                        <img :src="user.image" alt class="profile__image" />
+                       
                     </div>
                     <br />
                     <div class="form__input-group">
@@ -50,7 +60,7 @@
                     </div>
                     <Error :errors="errors" />
                     <div class="form__actions mt-3">
-                        <a @click="handleBackBtn" class="btn btn--info">Back</a>
+                        <a @click="handleBackBtn" class="btn btn--clear btn--info white--text">Back</a>
                         <button type="submit" class="btn btn--clear btn--danger">Update Account</button>
                     </div>
                 </form>
@@ -60,6 +70,8 @@
 </template>
 
 <script>
+import { upload } from '@/services/file-upload.service.js';
+ const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 import axios from 'axios';
 import { mapActions, mapGetters } from 'vuex';
 import _ from 'lodash';
@@ -77,11 +89,28 @@ export default {
             email: '',
             handle: '',
             location: '',
-            errors: []
+            errors: [],
+            uploadedFiles: [],
+            uploadError: null,
+            currentStatus: null,
+            uploadFieldName: 'photos'
         };
     },
     computed: {
-        ...mapGetters(['getUserData', 'isAuthorized'])
+        ...mapGetters(['getUserData', 'isAuthorized']),
+
+        isInitial() {
+        return this.currentStatus === STATUS_INITIAL;
+      },
+      isSaving() {
+        return this.currentStatus === STATUS_SAVING;
+      },
+      isSuccess() {
+        return this.currentStatus === STATUS_SUCCESS;
+      },
+      isFailed() {
+        return this.currentStatus === STATUS_FAILED;
+     }
     },
     methods: {
         ...mapActions(['saveUserData']),
@@ -137,7 +166,43 @@ export default {
                     this.errors = [];
                 }, 1500);
             }
-        }
+        },
+         reset() {
+        // reset form to initial state
+        this.currentStatus = STATUS_INITIAL;
+        this.uploadedFiles = [];
+        this.uploadError = null;
+      },
+      save(formData) {
+        // upload data to the server
+        this.currentStatus = STATUS_SAVING;
+
+        upload(formData)
+          .then(x => {
+            this.uploadedFiles = [].concat(x);
+            this.currentStatus = STATUS_SUCCESS;
+          })
+          .catch(err => {
+            this.uploadError = err.response;
+            this.currentStatus = STATUS_FAILED;
+          });
+      },
+      filesChange(fieldName, fileList) {
+        // handle file changes
+        const formData = new FormData();
+
+        if (!fileList.length) return;
+
+        // append the files to FormData
+        Array
+          .from(Array(fileList.length).keys())
+          .map(x => {
+            formData.append(fieldName, fileList[x], fileList[x].name);
+          });
+
+        // save it
+        this.save(formData);
+      }
     },
     created() {
         if (localStorage.getItem('authToken') && _.isEmpty(this.getUserData)) {
@@ -159,7 +224,9 @@ export default {
             }
         }
     },
-    mounted() {}
+    mounted() {
+        this.reset();
+    }
 };
 </script>
 

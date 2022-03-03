@@ -76,6 +76,7 @@ export default {
     components: {
         Error,
         OAuth
+        
     },
     data: function() {
         return {
@@ -85,7 +86,9 @@ export default {
             errors: []
         };
     },
-    
+    computed: {
+        ...mapGetters(['getSocket'])
+    },
     methods: {
         ...mapActions(['saveUserData', 'toggleAuthState']),
         handleSubmit() {

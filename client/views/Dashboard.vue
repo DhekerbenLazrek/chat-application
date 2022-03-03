@@ -1,8 +1,8 @@
 <template>
-    <div class="dashboard">
+    <div class="pl-13 pr-4 row">
         <v-subheader class="py-0 d-flex justify-space-between rounded-lg">
             <h3>Dashboard</h3>
-            <v-btn color="success">
+            <v-btn class="vieworders" color="success">
                 View Orders
             </v-btn>
         </v-subheader>
@@ -12,6 +12,7 @@
                 <v-alert dense text type="success">
                     Login Successfully! Welcome to <strong> Orizon</strong>
                 </v-alert>
+                
                 <v-row>
                     <v-col lg="6" cols="12" v-for="(item,index) in activityLog" :key="index">
                         <v-card elevation="2" class="rounded-lg">
@@ -141,6 +142,7 @@
 <script>
     export default {
         name: "Dashboard",
+        props: [],
         data() {
             return {
                 activityLog: [
@@ -197,5 +199,9 @@
         top: -33px;
         text-align: center;
         padding-top: 12px;
+    }
+
+    .vieworders{
+     left:750px;
     }
 </style>

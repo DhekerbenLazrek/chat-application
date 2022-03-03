@@ -5,6 +5,10 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
     {
+        image: {
+            type: String,
+            default: null
+        },
         handle: {
             type: String,
             required: true,
@@ -30,10 +34,6 @@ const UserSchema = new Schema(
         status: {
             type: String,
             default: "user",
-        },
-        image: {
-            type: String,
-            default: null
         },
         location: {
             type: String,
