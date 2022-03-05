@@ -111,14 +111,14 @@
           </v-carousel>
   <v-btn  small block color="black" class="white--text caption" @click="watchVideo(index)" > Video </v-btn>
   <v-btn  small block color="black" class="white--text caption" @click="revealEv(index)"> Discription </v-btn> 
-  <!-- <v-btn  small block color="black" class="white--text caption" @click="showsalle(salle._id)" > Reservation </v-btn> -->
+  <v-btn  small block color="black" class="white--text caption" @click="showsalle(salle._id)" > Reservation </v-btn>
  
-  <div>
+  <!-- <div>
   <v-btn id="butt" class="mx-3 white--text caption" elevation="2" small color="black" to="/Reservationform">
           Reservation
       <v-icon class="white--text caption">mdi-arrow-right</v-icon>
       </v-btn>
-      </div>
+      </div> -->
     <v-expand-transition>
       <v-card v-if="salle.reveal" class="transition-fast-in-fast-out v-card--reveal" style="height: 100%;">
         <v-card-text color="white" >
@@ -254,10 +254,7 @@ const Cookie =require('js-cookie');
 .title{
   top:200px;
 }
-#router {
-  left:-50px;
-  font-size: 15px;
-}
+
 #nav {
   padding:38px;
   

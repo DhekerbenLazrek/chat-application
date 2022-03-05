@@ -181,7 +181,7 @@
 </template>
 
 <script>
-import createSalle from "./createSalle.vue";
+// import createSalle from "./createSalle.vue";
 import axios from "axios";
 const Cookie = require("js-cookie");
   export default {
@@ -220,8 +220,17 @@ const Cookie = require("js-cookie");
       }
       
     },
+    async mounted(){
+       const id= this.$route.params.idsalles
+       console.log(id)
+       const show = await axios.get(`http://localhost:5000/api/Salles/${id}`);
+       console.log(show.data)
+       this.salles = show.data
+
+
+    },
     components: {
-    createSalle,
+    // createSalle,
   },
     
 computed: {

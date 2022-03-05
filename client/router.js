@@ -127,7 +127,7 @@ const router = new Router({
                     
                 },
                 {
-                    path: '/reservationform/',
+                    path: '/reservationform/:id',
                     name: 'Reservationform',
                     component: () => import('@/components/Datepicker/Reservationform.vue'), 
                     
