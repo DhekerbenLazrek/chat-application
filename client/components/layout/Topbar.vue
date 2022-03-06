@@ -61,7 +61,9 @@ export default {
   data() {
     return {
       menus: [],
-      items: []
+      items: [],
+      search:"",
+      filteredList:""
     };
   },
 };

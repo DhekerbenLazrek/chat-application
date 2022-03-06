@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const SalleSchema = new Schema({
-
-
+const SalleSchema = new Schema(
+    {
     avatar: {
         type: String,
         required: true

@@ -13,16 +13,14 @@ export default new Vuex.Store({
         currentRoom: null,
         salle:null,
         rooms: [],
-        socket: null
+        
     },
-    
-    
     
     getters: {
         getUserData: state => state.authUser,
         getRoomData: state => state.rooms,
         isAuthorized: state => state.authState,
-        getSocket: state => state.socket,
+        
         getCurrentRoom: state => state.currentRoom
     },
     mutations: {
@@ -54,9 +52,7 @@ export default new Vuex.Store({
         TOGGLE_AUTH_STATE: (state, payload) => {
             state.authState = payload;
         },
-        ASSIGN_SOCKET: (state, payload) => {
-            state.socket = payload;
-        },
+       
         LEAVE_ROOM: (state, payload) => {
             state.currentRoom.users = payload;
         },
@@ -86,9 +82,7 @@ export default new Vuex.Store({
         toggleAuthState: (context, payload) => {
             context.commit('TOGGLE_AUTH_STATE', payload);
         },
-        assignSocket: (context, payload) => {
-            context.commit('ASSIGN_SOCKET', payload);
-        },
+        
         saveCurrentRoom: (context, payload) => {
             context.commit('SAVE_CURRENT_ROOM', payload);
         },

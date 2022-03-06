@@ -1,15 +1,33 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PaySalleSchema = new Schema({
-  
+const PaySalleSchema = new Schema(
+  {
   title: {
     type: String,
     required: true,
   },
-  typedefete: {
+  typedefete : {
+    type : Array,
+    required:true,
+    select:true,
+  },
+  startD: {
+    type: Date, default: Date.now ,
+    
+  },
+  endD: {
+    type: Date, default: Date.now
+    
+  },
+  time: {
     type: String,
-    required: true,
+   
+  },
+  nombrepersonnes: {
+  type: String,
+  required: true,
+  select :true,
   },
   username: {
     type: String,
@@ -24,41 +42,28 @@ const PaySalleSchema = new Schema({
     required: true,
   },
 
-  startD: {
-    type: String,
-    required: true,
-  },
-  endD: {
-    type: String,
-    required: true,
-  },
-  time: {
-    type: String,
-    required: true,
-  },
-  nombrespersonnes: {
-  type: String,
-  required: true,
-  },
   ville:{
     type: String,
     required: true,
+    select :true,
   },
 
   total: String,
-  required: true,
-
-
+  
   status: {
     type: String,
     default: "user",
   },
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
 },
+  {
+    timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
+    }
+}
 
-});
+);
 
 const PaySalle = mongoose.model("PaySalle", PaySalleSchema);
+
 module.exports = PaySalle;

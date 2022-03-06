@@ -73,20 +73,23 @@
     lazy-validation
     
   >
-     <v-select
-        outlined
-        v-model="typedefete"
-        :items="typedefete"
-        label="Type de fete"
-        dense
-        solo
-        ></v-select>
+         <v-select
+            outlined
+            solo
+            dense
+            v-model="typedefete"
+           
+            :items="listtypedefete"
+            label="Type de fete"
+            required
+          ></v-select>
           <v-text-field 
               outlined
               v-model="startD"
               type="date"
               label="date de début" 
               placeholder="Choisi une date"
+              required
             >
             </v-text-field>
             <v-text-field
@@ -95,7 +98,9 @@
             type="date"
             label="date de fin"
             @change="BetweenDates"
+            required
             >
+            
             </v-text-field>
 
       <!-- <v-dialog
@@ -152,6 +157,7 @@
             readonly
             v-bind="attrs"
             v-on="on"
+            required
           ></v-text-field>
         </template>
         <v-time-picker
@@ -183,7 +189,7 @@
             ref="nombrepersonnes"
             v-model="nombrepersonnes"
             :rules="[() => !!nombrepersonnes || 'This field is required']"
-            :items="nombrepersonnes"
+            v-bind:items="listnombrepersonnes"
             label="Nombre de personnes"
             placeholder="Nombre de personnes"
             required
@@ -226,7 +232,7 @@
             ref="ville"
             v-model="ville"
             :rules="[() => !!ville || 'This field is required']"
-            :items="ville"
+            :items="listville"
             label="Ville"
             placeholder="Select ville..."
             required
@@ -275,37 +281,49 @@ export default {
      data() {
     return {
        salles:null,
+      typedefete:"",
+       listtypedefete: ['Marriage', 'Hadhra', 'Fiancailles', 'Conferences','Siminaire'],
+       feteRules: [
+        v => !!v || 'This Field is required',
+      ],
+         startD:[],
+         endD:[],
+        time:"",
+        nombrepersonnes:"",
+        listnombrepersonnes: ['50-100', '100-150','150-200', '200-250', '250-300', '300-350', ' 350-400', '400-450', '450-500', '500-550', '550-600', ' 600-650', '650-700', '700-750' ],
        username:Cookie.get('name'),
+       nameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 15) || 'Name must be less than 15 characters',
+      ],
        useremail:Cookie.get('email'),
+       emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
        userphone:Cookie.get('number'),
-       typedefete: ['Marriage', 'Hadhra', 'Fiancailles', 'Conferences','Siminaire'],
-       startD:"",
-       endD:"",
+       phoneRules: [
+        v => !!v || 'Phone number is required',
+      ],
+        ville:"",
+      listville: ['Tunis', 'Sousse', 'Monastir', 'Sfax', 'Mahdia', 'Ariana', ' Hamamet', 'Nabel', 'Gafsa', 'Gabes', 'Tataounie', 'Ben Arous', 'Kairouan', 'Beja', 'Tozeur', 'Jandouba','Lkef','Mednin','Zaghouane',],
+      villeRules: [
+        v => !!v || 'ville is required',
+        
+      ],
       //  dates: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
       //   .toISOString()
       //   .substr(0, 10),
       // dateRangeText:"",
-      time:"",
-      nombrepersonnes: [50-100, 100-150, ],
-      username: "",
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 15) || 'Name must be less than 15 characters',
-      ],
-      useremail:"",
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
-      userphone:"",
-      ville: ['Tunis', 'Sousse', 'Monastir', 'Sfax', 'Mahdia', 'Ariana', ' Hamamet', 'Nabel', 'Gafsa', 'Gabes', 'Tataounie', 'Ben Arous', 'Kairouan', 'Beja', 'Tozeur', 'Jandouba','Lkef','Mednin','Zaghouane',],
-      total:"",  
+     
+      
+      total:[],  
       snackbar: false, 
       text: `Added to cart`,    
       show: false,
       modal2: false,
       valid: true,
-      select: null,
+      select:null,
       checkbox: false,
       checkbox: false,
       errors:"",
@@ -345,16 +363,16 @@ export default {
 
 async paymentSend(){
   let newPayment = {
-        title:this.salles.title,
+        title: this.salles.title,
+        typedefete: this.typedefete,
+        startD: this.startD,
+        endD: this.endD,
+        time: this.time,
+        nombrepersonnes: this.nombrepersonnes,
         username: this.username,
         useremail: this.useremail,
         userphone: this.userphone,
-        typedefete: this.salles.typedefete,
-        startD:this.salles.startD,
-        endD:this.salles.endD,
-        time: this.salles.time,
-        nombrepersonnes:this.salles.nombrepersonnes,
-        ville:this.salles.ville,
+        ville: this.ville,
         total: this.total,
         
       };

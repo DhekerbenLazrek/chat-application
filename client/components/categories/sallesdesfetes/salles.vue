@@ -185,6 +185,7 @@ const Cookie =require('js-cookie');
       userstatus:Cookie.get('status'),
       showPic:true,
       items: ['Sousse', 'Tunis', 'Monastir', 'Mahdia','Sfax','Hammamet',],
+      filteredList:"",
         }},
 
         components: {

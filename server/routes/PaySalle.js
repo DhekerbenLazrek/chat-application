@@ -11,7 +11,7 @@ router.post('/', async(req, res) => {
             if (!Paycreate) throw new Error('Pay creation opperation failed !');
             console.log(Paycreate)
             res.status(200).json(Paycreate);
-        } catch (err) {
+    } catch (err) {
             console.log(err)
             res.status(500).json({ message: err.message })
         }
